@@ -1,0 +1,310 @@
+docker version 
+docker info :it gives the detailed information 
+sudo su 
+docker images
+docker pull hello-world :thids instruction for creating docker image
+docker run image name:it is the command to use the create container in basic manner
+docker pull centos 
+docker images
+docker ps :gives the information regaurding running container 
+docker run -d -ti centos /bin/bash :-d meane demon mode or the container will run in back end
+#  the above command is used for creating the container
+  
+docker exec -ti container id /bin/bash :this is used for login to the container
+  # now we are in container
+exit :it is used for quit from the container
+docker stop container id :it is used for stop the container
+docker stop container id :it is start for the container 
+docker rm container id :to remove the container
+dockerstats :it can provide how much cpu is utilized by the container
+docker -d -ti container id ping ww.google.com
+docker rmi imagename:to remove the image
+
+sudo su  
+cd image
+ls -altr (Dockerfile is present in the image directory)
+
+
+#Docker file
+#Gitbucket image:
+ ----------------
+ - mkdir batch1
+ - cd vatch1
+ - vi Dockerfile
+ From java:latest
+ MAINTAINER ram info@google.comvvv
+ LABEL env=prodution {label}
+ ENV apparea /data/app {environment variables}
+ Run mkdir -p $apparea  {while start the image this directory is created}
+ ADD ./gitbucket.war $apparea {add the file to this directory}
+ WORKDIR $apparea
+ CMD ["java","-jar","gitbucket.war"]  {run the gitbucket at the container start}
+ 
+ 
+# to run the docker file we use the following command
+ 
+ docker build -t(tagname) gitbucket .(. indicates the path ,curent directory)
+#   we got the error due to absence of gitbucket.
+#now we have to install gitbucket
+
+ls -altr
+docker build -t(tagname) gitbucket .
+docker images
+
+#to run the gitbucket we use following command for port farwarding
+
+docker run -d -p 8080:8080 gitbucket
+#here we get the sha id
+docker logs give the sha id
+# now git bucket will be start
+ 
+ #now goto google chrome and give the publicip with port number
+ docker ps -a
+ 
+ docker class-5
+ 
+ #if volumes are not attached ,any container is down we lost the data/app
+  # now go to chrome and give the ip with 8080
+# we get gitbucket home page
+
+#now create one repository name as before volume
+#now open git bash and navigate to C drive
+mkdir batch5
+cd batch5 
+cd clone give the giitbucket url of beforevolume
+#give each and every command one by one in gitbash by using beforevolume 
+ 
+ #now goback to putty terninal
+ docker ps -a
+ 
+ docker stop gitbucketcontainerid
+ 
+ docker ps -a
+ 
+ #we start and stop the container the data gitbucket is no change
+ docker stop gitbucketcontainerid
+ docker rm gitbucketcontainerid
+docker ps -a 
+ #now the gitbucket web page is not run.so we lost the data
+docker images
+docker run -d -p 8080:8080 gitbucket
+docker logs sha idnumber
+now goto chrome,giveip with 8080,we get gitbucket
+docker ps -a
+docker stop containerid
+docker rm containerid
+docker ps -a
+pwd
+mkdir gitbucket
+cd gitbucket
+pwd
+
+#for volume attached to the container we have to use the following structure
+-v local path:container path
+
+-v /home/ubuntu/gitbucket:/root/.gitbucket gitbucket
+docker logs sha id number
+now gitbucket is started
+
+create new repository name as aftervolume 
+now goto git bash 
+navigate to C
+git clone aftervolume 
+
+now goto putty
+
+docker run -d -p 8080:8080 -v /home/ubuntu/gitbucket:/root/.gitbucket gitbucket
+ ls -altr
+ docker ps -a
+ 
+ docker stop containerid
+docker rm containerid
+
+now we goto chrome and refresh it,we don't get gitbucket
+ 
+ docker run -d -p 8080:8080 gitbucket /home/ubuntu/gitbucket/:/root/.gitbucket gitbucket
+ docker logs sha idnumber
+ now gitbucket is started
+goto chrome refresh it we get the data
+
+
+
+clss-7
+docker networks
+ netyworking for is to isolate the container from one to another
+ 
+
+docker network ls
+docker inspect networkid 
+
+costumized networks are also used for some special cases 
+Bridge network is the default network
+
+docker images
+docker run  -ti centos :whenever you exit from here the container will stop
+
+EXIT
+to avoid this  
+docker run  -ti centos   ctrl p  q :this is help ful for the container is running in back end or we can use demon mode(-d)
+docker inspect networkid 
+here the container uses defaultly bridge network
+from here we can get container ip address 
+now i want to create a container
+docker run -ti -d --name centcontainer1 centos
+docker run -ti -d --name centcontainer2 centos
+ 
+ docker network ls 
+ docker network network id (network id is bridge networkid because it is default network)
+now i want to communicate container1 to container2 for that first
+login to aontainer1 from there to  ping to container2 
+
+docker exec -ti container1id /bin/bash : now iam in the container
+ ping container2 ipaddress :get from docker inspect command
+now it is connected
+ctrl+c 
+exit
+  
+  now i wanto create customaised network
+  docker network ls
+  ifconfig :here we can get the ip address as well as container information,how many containers are there with details
+  brctl show:it gives the how many containers are the in default network i.e. in bridge network
+  docker network ls
+  
+  
+  network travelling sequence:
+  container ---ipaddress---veth0----driver---ubuntu---etho(ethernet ip)--internet
+   
+   now i want to create a network for that we have to use following command 
+   
+   docker network create batch5 docker network ls :now here we can see the batch5 network
+   
+   
+   
+   class8:
+   
+     now i want to create a container and it is with in the network batch5 for that we have to write the following command
+	 docker run -d -ti --name 5batchcontainer --network batch5 anyimagename(centos)
+	 now container is created 
+	 docker inspect batch5networkid
+	 docker ps -a 
+	 docker exec -ti 5batchcontainer /bin/bash :now we are in container
+	 now i want to connct container in batch5 network with container in bridge network
+	 ping (ip adress of bridge container)
+it is not possible to connect for the connection we have to follow some rules
+
+
+exit :logout from container
+brctl show :here we can see how many networks are there and how many containers are present in every network
+
+now i want to disconnect container with network
+docker network disconnect  batch5(network) containerid 	
+brctl show :here we observe that the container is disappear
+
+
+this is docker networking 
+
+
+
+
+now we have to know the docker push and docker pull commands
+ ubuntu:image#   :in tjhis pathe only  we can push or pull
+ we have to create account in docker hub
+ then goto putty
+ docker log in 
+ enter username 
+ passwd
+ 
+ docker push imagename(gitbucket)latest
+ 
+ docker build -t username/gitbucket:bat5.0 .
+ docker images
+ now i want to push an image to docker hub 
+ docker login
+ enter username and passwd
+ docker push username/gitbucket:bat5.0
+ docker images
+ docker rmi username/gitbucket:bat5.0
+ 
+ now i want to download the same file
+ 
+ docker pull username/gitbucket:bat5.0
+ 
+ docker images
+ 
+ 
+ this is the work flow
+ --->we can create one docker file using instructions
+ --->by using the above docker file we have to build an image 
+ --->after we push the image to docker hub 
+ --->:if we require the image from docker hub we can pull the required image
+ 
+ DOCKER COMPOSE:
+ cd
+ mkdir multicontainer 
+ cd multicontainer
+ vi docker compose.yml    {version: '3'
+ service:
+     web: 
+    image: nginx
+	database:
+	image :redis 
+cat compose.docker 
+
+apt install docker-compose
+ now docker-copose is installed 
+ 
+docker-compose -v
+to veryfy the syntax we have to use the following command
+docker-compose config:here we can get the content in the cocker compose
+docker-compose up -d :now the above code running
+we got the nginx and redis containers are created and running
+docker-compose down :both the servers are in stop condition
+docker-compose up -d :now it is running
+docker-compose up -d
+docker ps :two containers are available
+docker-compose up -d --scalenginx=3
+
+
+
+docker networks
+docker network ls : list of networks
+docker inspect networkid :gives how many containers are there with their ip address
+docker run -d -ti --name container1 centos :creater the container under default network
+docker run -t container id :loginto the container
+docker network create batch5 :to create the customized network
+docker run -d -ti --name batchcontainer --network batch5 centos :here container is created in the customised network
+connection:
+docker run -d -ti 
+
+
+
+docker run -ti -d --name centcontainer1 centos
+docker run -ti -d --name centcontainer2 centos
+
+docker run -ti container1id  ;log in to the container1
+ping ipaddress of container2 :here the connection is formed 
+
+
+
+
+docker volume
+
+create the container of bit bucket
+docker run -d -ti gitbucket /bin/bash
+docker run -d -p 8080:8080 gitbucket
+docker logs shanuber
+now we go to chrome and get the gitbucket
+crete one repository
+open git bash 
+clone it and go togui and refresh it 
+
+now removethe container
+now we can't get gui mode
+same proceedure repeate here
+now we use the volume now we did't loose data
+docker run -d -p 8080:8080 /home/ubuntu/gitbucket:/root/.gitbucket gitbucket
+now stop container
+remove contaner 
+docker run -d -p 8080:8080 /home/ubuntu/gitbucket:/root/.gitbucket gitbucket
+now did'nt loose data
+ 

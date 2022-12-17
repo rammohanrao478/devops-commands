@@ -1,0 +1,254 @@
+			class 9 & 10
+go to new item in jekins dasgboard
+dependency 
+1.built other projects are build
+2.build pipeline view
+ goto build pipeline if in case it is not avaiable goto inistall 
+ click on build
+ if dependency is available then only it posible
+ 
+ build ,test and packege are run by using the click build now
+ 
+ click on our put console and see the compile ,test ,jar results
+  
+  if any configuration or stash level error are available then those erors are displayed as red mark
+   
+   if we configure to enable the add time stamp to the console output we get time of exicution output
+   go to putty type date we get the  time and date that is displayrd at the consile output
+   
+   
+   poll scm : if any changes happened in the stash by developer it is triggred with in one minute automatically
+   -->open CIT -->CLICK OLN BUILD --->GOTO CONFIGURE--> goto build trigger under that select poll scm under that schedule we give the *****  this means every minute it will trigger 
+   apply --->save
+    we objerve that the build is automatically trigger with in ine minute
+	go to  stash and edit thre README file
+	"checking the pole scm" is enter into the README FILE by usig edit option
+	--->with in  one mminute the particular job wiil be run 
+	--->goto putty and type date :it is not neccesary
+	-->we observe that the buildjob is automatically trigger
+	--->we can observe that the job is build initially by user after the job will trigger by scm(sorce code mngmnt)
+   
+   
+   
+   build periodically(cron job)
+cron job details
+
+field    description    allowed value
+MIN       minute field    0 to 59
+HOUR      Hour field      0 to 23
+DOM       Day of Month     1 to 31
+MON        month field      1-12
+DOW       Day of Week    0-6 0-sun  1-mon 2-tue 3-wed 4 thu 5-fri 6-sat
+
+  *    *     *    *     *        
+  |    |     |    |     |
+  MIN  HOUR  DOM  MON  DOW
+  
+  30  6  * * * --->means that the job will run everyday morning 6.30
+  
+  0  6  30 * * --->means that in every month 30th morning 6.30 the job wiil be run
+  
+0  6  28  02 * -->every year  second month  28 morning 6.30 the job will be run
+
+0  6  28  02 0 --->every year  second month  28 morning 6.30  sunday the job will be run
+
+ * * * * * --->the job  will run every minute
+ 
+00 00 * * 0 rvery sunday the will run
+ 
+go back to jenkins build -->configure --->build trigger---> select build periodically --->noe we have to give the scdule 44 2 *  *  *  *
+
+type date in terminal--->after that we have to give the configuration like 
+
+
+web hooks
+
+go to configure of build remove the sleciotn of poll scm and build perodically
+--->goto got bucket--->goto settings -->click on service hooks-->click on  addwebhook--->under payload URL give the jenkins url copy from search bar and paste it in pay load URL 
+ 
+ --->FOR SECURITY token go to genkins click on username like ramu at cornet of the page--->click on configure-->here we have to generate a token-->click on add new token-->click on generate-->it wiil be generated--->copy it and paste it in notepad 
+ 
+ -->goto settings again paste it under API token--->APPLY -->SAVE;we get error here 
+ 
+ 
+
+--->upto we con't get any result because we have to install git bucket plugin
+--->for that go to manage jenkins--->click on manage plugins--->select availability -->search for git bucket plugin--->click on "install withouot restart"
+--->now go back to git bucket and click testhook -->now it is successfull
+
+
+http response status codes
+-->informational responses(100-109)
+--->successfull)(200-299)
+--->redirection messages(300-399)
+--->clint error responses (400-499)
+--->server error responses(500-599)
+
+go to configguration of build
+--->goto build trggers--->select buil when a change is pushed to gitbucket
+--> and also select push git commit 
+
+
+--->again go to security token  we alredy know the security tocken
+-->then select the push event
+ --->click on addwebhook 
+  now goto jenkins 
+  CIT--->build-->
+  --->let me do some changes in the stash--->edit the README file-->add "checkingthe webhooks" in readme file
+  --->when ever weclick on commit the jenkins build job wiil be triggerd
+  
+  
+  web hooks process
+   --->stash level changes--->settings--->serviocehoooks 
+   --->for token value we go to login option select configure under that we can get it
+
+   --->install the git bucket plugin   
+  --->in jenkins job enable the parameter(in build triggers)
+  
+  
+  permeterized:
+  if 30 applications are there jobs are required-->no of jobs can bedecresed to 3 generic jobs 
+  --->for doing that we can goto configguration under that select git and edit the repository url--->in the place of simplejar write $(Application_Name)
+ ---->goto branch specifier -->in the place of master we have to write $Branch
+---->for doing that typr we select "this project is perameterized" under git bucket
+under that  select add perameter
+select choce perameter
+give the name Application_Name
+under choices give samplejar   samplejar1   samplejar2  
+under description 
+we can write whatever the text you want
+we select different types or parameters 
+now we go to jenkins dashboard -->we can see the build with perameter option in dashboard
+goto permeters in dashboard we can chech the our required parameters are triggered or not 
+
+
+-->now select Execuit concurrent builds if necessry under git bucket
+-->this means I can trigger two or three perameters paralelly
+--->apply and save 
+in this we cannot choose automatic triggering
+ 
+ how to deploy the war files to apache tomcat
+ 1.we downloaded he the war files like gitbucket and jenkins
+ 2.we placed these files under apache webapps
+  
+ mannual deployment is done
+  
+  go to terminal 
+ --> cd 
+  -->cd softwares
+-->pwd
+-->cd /opt/apache-tomcat-8.5.75/webapps/
+ls -altr
+
+
+1.one project is like wepapp project
+2.we need to upload same to stash
+3.in jenkins we need to install the apache deploy container plugin 
+4.create one job .. there have to integrate appache tomcat.
+
+goto terminal 
+--->pwd
+-->cd 
+--->ls -altr
+--->mkdir webappproject
+--->cd webappproject/
+-->mvn archetype:generate> project.txt
+---> ctrl+c
+--->grep "maven-archetype-webapp" project.txt
+--->or
+--->cat project.txt | "maven-archetype-webapp"
+#from the above command we notedown the number like 1874
+
+ls -altr
+mvn archetype:generate
+--->give the number1874
+--->select the version -->7
+--->group id : com batch.devops5
+--->aritfact id :webappwar
+--->enter--->enter
+ -->ls -altr
+ now the project is created
+ -->tree
+ 
+ 
+ 
+now goto gui mode here also create project
+-->create new repository in git bucket
+--->repository name as webappwar
+goto terminal
+--->ls -altr
+--->pwd
+--->cd webappwar
+--->ls -altr
+--->copy the commands in new repository and p[aste it in terminal
+--->give: root and root
+--->ls -altr
+--->git status
+--->git add .
+--->git commit -m "adding src files"
+--->git push
+ 
+ 
+ 
+NOW GO TO JENKINS NEED TO INSTALL THE PLUGIN
+--->now goto jenkins here we install the plugins
+-->click on manage jenkins--->manage plugins
+search for what is the plugin to deploy warfile to apache tomcat
+"deploy to container plugiin" is used for to deploy the war files to apache tomcat
+-->install the plugin
+
+
+--->now go to jenkins dashboard and --->new item -->named it as wardeploy-->select organization folder--> click on OK 
+-->discard old builds --->20--->10
+--->source code management -->git--- givr the URL
+--->goals and options--->package
+  ---->postbuild actions--->slect deploy to container
+--->under war/ear files--->give  **/*war :this means that whereever the war file is there it can be copied here with the help of **/*
+---->context path--->webapplication   
+--->add containers---> select tomcat 8.version
+  
+  
+  --->go to terminal
+  ---> cd 
+  ---->cd /opt/apache-tomcat-8
+--->cd conf
+ --->ls -altr
+--->vi tomcat-users.xml
+ add the following to tomcat-users.xmal
+ --->   <role rolename="manager-script"/>
+         <user username="deploy" password="deploy" roles= "manager-script"/>
+ now we have to restart for that
+ --->cd /opt/apache-tomcat-8
+ --->cd bin/
+ --->ls -altr
+ --->./shutdown.sh
+ 
+--->ps -ef | grep "java"
+--->./startup.sh
+-->goto chrome give the ip with port
+--->now we can see the manager option in tomcat dashboard
+--> now goto sign into the jenkins
+-->select wardeploy --->click on copnfigure-->dicard oldbuilds-->20   20--->select git-->give the corresponig URL
+--->credentials--->root/root
+--->under build triggers-->unselect if incase any option selected
+--->under goals & options --->package
+---->postbuild actions--->slect deploy to container
+--->under war/ear files--->give **/*war :this means that whereever the war file is there it can be copied here with the help of **/*
+--->context path--->webapplication   
+--->add containers---> select tomcat 8.version
+--->under tomcat 8.X REMOTE --->credentials ---> add jenkins-->username is "deploy",passwd is "deploy"
+--->deploytotaomcat
+--->description :deploytotaomcat
+click on add
+ --->go back 
+ under credentials--->deploy/****(deploy to tomcat)
+ give the tomcat URL--->IT IS COPY FROM CHROM NOT FRPM GIT BUCKET
+ --->apply --->save
+ --->goback to jenkins
+ --->click on build now click on console output
+ --->goback and go to workspace-->?we see that webappwar.war file here
+--->now goto tomcat homepage and check it--0>we see the webappwar--->open it in new page 
+-->helloworld msg will displayed
+ 
+
+	

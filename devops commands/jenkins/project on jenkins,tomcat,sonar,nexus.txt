@@ -1,0 +1,48 @@
+project:
+=======
+here we practice aproject 
+1.we ned to intigarte tomcat,github ,sonarqube,nexus
+2.we have to create four instaneces for intigarte tomcat,jenkins ,sonarqube,nexus
+sonarqube intigration process
+==============================
+1.we need to install java 
+2.we need to install sonar qube
+3.goto sonarqube dash board login,give the name and generate token
+4.we go to jenkins dash board---->jenkins dashboard-->manage genkins--->manage plugins---->downlopad plugins
+5.configure system----->under sonarqube server we have to give token number and url of sonar
+6.then goto github---->pom.xml--->under properties tag give the public ip of sonar
+
+nexus in tegration proces:
+=========================
+1.we need to install java 
+2.under opt folder only we need to install nexus
+3.unzip the tar file
+4.we get two directories
+5.reneme the one of the directory
+6.now we need to change the owner ship for thew two directories from root ec2-user
+7 cd nexus3/bin
+8.vi nexus.rc
+9.remove the comment(#) and give ec2-user 
+10 now we need to create soft link 
+    ln -s /opt/nexus3/bin/nexus /etc/init.d/nexus
+11. cd /etc/init.d/
+12.now we have to add nexus user
+   chkconfig   --add nexus
+13.chkconfig nexus on
+14.sudo service nexus start
+15.nexus public ip:8081
+16.now we need to create two repositories for relese and snapshot
+17 now we go to distribution management we give the public ip of nexus instance
+18.now we need to intigrate with jenkins
+   log into the jenkins instance
+     vi /etc/maven/sttings.xml ====>we ned to add the following
+	 
+ <server>
+   <id>NexusRepo</id>
+   <username>admin</username>
+   <password>admin</password>
+ </server>
+ 
+then we need to create a job and run it we can observe each and every tool
+
+ 

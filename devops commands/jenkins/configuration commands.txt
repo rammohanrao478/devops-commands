@@ -1,0 +1,74 @@
+for workoiing of maven we have to set the environment variables
+for that
+-->  go to home directory
+--->ls -altr
+
+---> exract the maven file in opt directory linke tomcat
+--->cat .bash_profile
+--->file  $(which java)
+--->file /etc/alternatives /java )
+--->ls -altr
+--->  vi .bash_profile
+add the folloing
+ export M2_HOME=/opt/apache-maven-3.8.4
+  export PATH=$PATH:$M2_HOME//bin
+  export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.bo6-2.e18_5x86_64/jre
+  export PATH=$PATH:JAVA_HOME/bin
+  #User specific environment and start up programs
+  --->source ./.bash_profile
+--->mvn --version
+--->ls -altr
+--->mkdir project
+--->cd project/
+---> ls -altr
+--->mvn archetype:generate > project.txt
+---> grep "maven-archetype-simple"project.txt
+--->mvn archetype-simple > project.txt
+--->clear
+--->rm -rf
+--->mvn archetype:generate :simple project will create here
+--->give 1870
+--->choose any number 1 :1.3
+					  2  :1.4
+					choose 1 or 2 choose :2
+---->group id:simplejar
+---->artifact id :	simplejar	
+--->enter
+--->enter
+--->y
+--->ls -altr
+--->tree
+now we have to upload this project file into gitbucket
+now lets create  one project  in gui mode>i.e. goto browser click on gitbucket 
+and create new repository name it as simplejar
+
+now wehave to create another directory
+--->pwd
+--->cd
+--->mkdir clone
+--->cd clone
+--->install git 
+copy under newrepository commands and paste them in terminal with git(|like add,commit,push) to  push the readme 
+
+here simplejar directory for local and clone directory is for remote
+--->pwd
+--->cd simplejar
+simplejar directory is under clone directory
+-->ls -altr
+--->pwd
+--->cd ../../project
+--->ls -altr
+--->cp -rp * /home/ec2-user/clone/simplejar/
+--->cd /home/ec2-user/clone/simplejar
+ls -altr
+now copied files into simple jar iscompleted
+--->git status
+--->git add 
+--->git commit -m "adding the project source code"
+--->git push
+now goto gltbucket 
+now go to jenkins
+create a job
+for that goto new item giv the name CIT
+under CIT  click on newitem name it as build 
+click on configure

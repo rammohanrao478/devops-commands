@@ -1,0 +1,82 @@
+					class-18
+if number of jobs ar e incresed one machine(master) is cannot handle
+
+for that we have to install the slave nodes
+advantages:
+1. to increase the performance 
+2.to avoid the waiting queue
+3.to reduce the time 
+4.we can cegrigate the linux and windows 
+drawback
+1. maintanance
+because we have to observe both master and slave
+   class 19
+go to aws console1. select redhat linux8
+1.select t2.small
+6.add rule---sselect samesecurity group of master
+7.r eview and launch
+
+
+goto jenkins
+select manage jenkins
+selectmanage nodes
+select new nodes
+node name ---slave
+select perminent agent---click on ok
+
+name--slave
+description---slave
+number of excecutors--1
+remote root directory:we have to give the path for that--goto instanc connet to putty---pwd---coppy the path ,enter it in remote root directory in jenkins 
+lables:slave
+usage:use this node as much as posible
+launch method:launch agent via SSH
+HOST:PUBLIC IP OF SLAVE machine
+credentials:click on add --click on jenkins --kind :SSH Username with privatekey
+ID:slave credentials 
+description---slave credentials
+username :ec2-user
+select privatekey
+click on add--open the .pem file--copy the exact manner don;t miss any hypen and don't add any space--for that copy start from bottom--paste it in enter directly key
+click on add --goto credentials--select ec2-user slave credentials
+host key verification stratagy :mannually trusted key verification stratagyclick on advanced--no need to provide any thing
+availability:keep the agent online as much as posible
+click on save
+red mark will be there --try to remove that --for that click on slave--click on launch agent---it tries to install automatically --otherwiser we have to do mannually
+now goto terminal---install java
+---sudo yum install java-1.8.0-openjdk
+   sudo yum install java-1.8.0-openjdk-devel
+now goto jenkins--click on node---relaunch--now it will be connected---now goback---red mark will be removed 
+click on dash board
+goto CIT--cli on wardeploy---configure--select "restrict where this project can be run"--label expression: slave
+apply---save
+now click on build now
+we got the error dueto casesenistive in slave and ---we have to install the the git
+
+click on build now
+ now also we got the error due to obsence of maven
+ now goto terminal and install maven
+ before going to that we have to install wget
+ then use the maven link and download it 
+ tihs process is don in software folder
+ cd /
+ ls -altr
+ sudo chown ec2-user ec2-user /opt/
+ cd
+ cd softwares/
+ tar -xvf for extarct the files and in opt 
+ now we have to set the environment variables
+ cd
+ ls -altr
+ vi .bash_profile
+ add following
+ export M2_HOME=/opt/apache-maven-3.8.4
+ export PATH=$PATH:$M2-HOME/bin 
+ save it
+ 
+ 
+ source ./.bash_profile
+  cd $M2-HOME :it is used to go to apache-maven-3.8.4
+  pwd
+  
+ 

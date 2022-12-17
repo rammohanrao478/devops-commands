@@ -1,0 +1,187 @@
+#!/bin/bash
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum install -y java-1.8.0-openjdk
+ sudo yum install -y java-1.8.0-openjdk-devel 
+yum install jenkins -y 
+wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+tar -xvf apache-maven-3.8.6-bin.tar.gz -C /opt
+cd
+vi .bash_profile
+yum install -y git
+service jenkins start
+wget https://get.jenkins.io/war-stable/2.361.1/jenkins.war
+wget https://get.jenkins.io/
+'\
+2.289.1/jenkins.war
+yum install fontconfig java-11-openjdk
+
+jenkins warfile web addresses:
+------------------------------
+https://get.jenkins.io/war-stable
+
+installation of jenkins war file:
+=================================
+
+java requirements:
+------------------
+link:
+=====
+https://access.redhat.com/documentation/en-us/openjdk/11/html/installing_and_using_openjdk_11_on_rhel/installing-openjdk11-on-rhel8
+
+sudo update-alternatives --config 'java'
+sudo yum install java-11-openjdk
+sudo update-alternatives --config 'java'
+
+jenkins war package:
+--------------------
+
+wget https://get.jenkins.io/war-stable/2.361.1/jenkins.war
+
+web hooks:
+==========
+goto github--->goto settings ---->select webhooks--->add webhooks--->git the {jenkins url/github-webhook} under payload url
+
+content type--->json
+select just push en event option---->click on add webhook 
+now onwords wenever you change in commit changes the job will be triggered
+
+if you want to change the jenkins default portnumber
+vi /etc/sysconfig/jekins========>jenkins port=8080
+service jenkins stop
+service jenkins start
+jenkins folder present under /var/lib
+
+git parameterised build:
+========================
+this plug in used for github branches
+this trigger option requres parameterised build pulgin
+this is used for build the jar or war packages under branches
+under general section we have to select this "project is  perameterised option "
+
+give the name whatever you want
+
+parameter type---->branch
+
+default value------>${BRANCH}
+
+build pipeline plug in is used for visiulization different
+buildpipeline plug is used under the upstream and downstream jos nothing but sequential jobs
+for this under dash board click omn + symbol--->give the name--->select build pipeline view
+delivery pipeline plug in is also used like build pipe line plugin
+ 
+parallel jobs:
+==============
+multipipe line plugin is used for   parallel jobs
+goto jenkins dash board and select multi job option 
+under build section select multi job phase 
+
+
+
+ 
+
+M2_HOME=/opt/apache-maven-3.8.6
+M2=/opt/apache-maven-3.8.6/bin
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.13.0.8-1.amzn2.0.3.x86_64/
+PATH=$PATH:$JAVA_HOME/bin:$M2_HOME:$M2
+jenkins installation on linux
+=============================
+#!/bin/bash
+sudo yum -y update
+sudo amazon-linux-extras install java-openjdk11
+wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+tar -xvf apache-maven-3.8.6-bin.tar.gz -C /opt
+yum install -y git
+sudo tee /etc/yum.repos.d/jenkins.repo<<EOF
+[jenkins]
+name=Jenkins
+baseurl=http://pkg.jenkins.io/redhat
+gpgcheck=0
+EOF
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum repolist
+sudo yum install jenkins
+sudo systemctl start jenkins
+systemctl status jenkins
+
+M2_HOME=/opt/apache-maven-3.8.5
+M2=/opt/apache-maven-3.8.5/bin
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.13.0.8-1.amzn2.0.3.x86_64/
+PATH=$PATH:$JAVA_HOME/bin:$M2_HOME:$M2
+
+
+github.com/srinivas1987devops
+
+
+
+
+M2_HOME=/opt/apache-maven-3.8.6
+M2=/opt/apache-maven-3.8.6/bin
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.332.b09-1.amzn2.0.2.x86_64/jre
+PATH=$PATH:$JAVA_HOME/bin:$M2_HOME:$M2
+
+
+
+ source ~/.bash_profile
+
+
+
+
+
+
+
+
+
+
+
+tomcat shell script:
+====================
+#!/bin/bash
+sudo yum install -y java-1.8.0-openjdk
+sudo yum install -y java-1.8.0-openjdk-devel  
+wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz
+wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+tar -xvf apache-maven-3.8.6-bin.tar.gz -C /opt
+tar -xvf apache-tomcat-8.5.81.tar.gz -C /opt
+cd
+cd /opt
+cd apache-tomcat-8.5.78/webapps/manger
+cd ../../
+/usr/lib/jvm/java-11-openjdk-11.0.13.0.8-1.amzn2.0.3.x86_64/bin/jav
+https://downloads.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz
+
+
+M2_HOME=/opt/apache-maven-3.8.6
+M2=/opt/apache-maven-3.8.6/bin
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+PATH=$PATH:$JAVA_HOME/bin:$M2_HOME:$M2
+
+
+tomcat shell script:
+====================
+#!/bin/bash
+sudo yum install -y java-1.8.0-openjdk
+sudo yum install -y java-1.8.0-openjdk-devel  
+wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.79/bin/apache-tomcat-8.5.81.tar.gz
+tar -xvf apache-tomcat-8.5.81.tar.gz -C /opt
+cd /opt
+cd apache-tomcat-8.5.81/conf
+vi tomcatusers.xml
+cd ../
+cd webapps/manager/META-INF/
+VI context.xml
+cd ../../../
+cd bin
+./startup.sh
+
+
+
+
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<user username="tomcat" password="tomcat" roles="manager-gui,manager-script"/>
+
+ 
+
+ 

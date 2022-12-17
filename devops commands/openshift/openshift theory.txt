@@ -1,0 +1,38 @@
+What is the use of OpenShift?
+OpenShift helps you to develop, deploy, and manage container-based applications. 
+It provides you with a self-service platform to create, modify, and deploy 
+applications on demand, thus enabling faster development and release life cycles.
+
+What is OpenShift and how it works?
+
+OpenShift is a layered system wherein each layer is tightly bound with the other 
+layer using Kubernetes and Docker cluster. The architecture of OpenShift is designed
+ in such a way that it can support and manage Docker containers, which are hosted 
+ on top of all the layers using Kubernetes.
+ 
+ What is OpenShift in simple words?
+OpenShift is a cloud development Platform as a Service (PaaS) developed by Red Hat. 
+It is an open source development platform, which enables the developers to develop 
+and deploy their applications on cloud infrastructure. It is very helpful in 
+developing cloud-enabled services.
+
+What is OpenShift vs Kubernetes?
+Both Kubernetes and OpenShift are popular container management systems, and each
+ has its unique features and benefits. While Kubernetes helps automate application 
+ deployment, scaling, and operations, OpenShift is the container platform that works 
+ with Kubernetes to help applications run more efficiently.
+ 
+ What is Docker Kubernetes and OpenShift?
+Image result
+Docker, Kubernetes and OpenShift are independent container technologies that are 
+related to each other in many ways and complement each other. Kubernetes can 
+deploy Docker images and orchestrate. Similarly, OpenShift seamlessly manages 
+the Kubernetes cluster. With Kubernetes, one can manage hundreds of containers
+
+Why did Google create Kubernetes?
+Let's open source it
+
+When Google began developing Kubernetes in March 2014, it wanted nothing less 
+than to bring container orchestration to the masses. It was a big goal and McLuckie, 
+Beda and teammate Brendan Burns believed the only way to get there was to open source 
+the technology and build a community around it.

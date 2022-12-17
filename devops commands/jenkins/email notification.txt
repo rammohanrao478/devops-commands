@@ -1,0 +1,132 @@
+email notification\
+_____________________
+whenever the jenkins job is success or failure we can get notification through  the email
+
+for that we have to install plugins
+those are two types they are 
+1.default email notification
+2.extended email notification
+ 
+ 
+ email notification 
+ 
+ 1.success---no notification
+ 2.failure---yes notification
+ 3.success --yes.notification as saying back to normal
+ 4.unstable buiild---yes notification
+ 
+ editable notification
+ 
+ 1.irrespective of situation(success,failure,stable,unstable,error)--yes notification along with consoleoutput as attachment
+ 2.it will attach with console out put(build log)
+ for email notification we install some plugins
+ 
+ 
+ step-1: installing email extension plugins
+ install email extension and email extension template plugins
+  
+  for this email notification ---goto jenkins dashboard
+ click on configure
+ 
+ email notification  (class-16)
+ _______________________
+1. login jenkins
+2.goto configure option and check whick email is provided during yuour id creation  
+3.navigate manage jenkins --->system configure--->goto email notification
+4.provide jenkins url
+5.system admin email address:*******@gmail.com 
+under email notification secxtion
+6.SMTP server: smtp.gmail.com
+7.default user email suffix :@gmail.com
+8.click on advance
+9.use SMTP Authentication---provide mail ID and passwd
+use SSL :enable
+SMTP port : 465
+Reply to address :rammohanrao4me@gmail.com
+test configuration by sending test email---provide mail id
+
+at mail end ..
+you should be login and it supposed to on ..allow less secureapps be on (go to account--->security)
+  
+  results in jenkins
+  
+  1.success---if every thing is success
+  2.failure--- if some stage fails you can see
+  3.stable ---junit cases in org which are implemented by developers...like test cases
+if 10 test cases are there and exicuted all 
+tests run :10,failures 0,errors:0 skipped :0
+unstable : 10,failures 1,errors:1 skipped :1
+
+
+example
+
+configure
+
+build settings--select email notification
+
+recipients:rammohanrao4me@gmail
+select "send email for every unstable build"
+apply ---save
+
+
+
+goback to dash board ---build now
+now we con't get any mail notification-->because it is success
+ now we do some miostach in configure like in the place of compile--give "compiled"
+ then build now
+ now build is failurewe can get the email notification
+ now correct the error ---now we can get the notification 
+ 
+ 
+ the main difference between email notification and extended email notification 
+    1,notificationis arise when    1.notification arise if job failure or success along with 
+	only some conditions              if we want to get log information is also available
+	
+	
+	editable/extended email notification
+	
+goto dash board
+manage jenkins
+goto configure system
+goto extended email notification 
+SMTP SERVER :"smtp.gmail.com"
+SMTP port :465
+select "use ssl"
+default user email suffix :@gmail.com
+click on advance
+default content type :plain text
+list id :rammohanrao4me@gmail
+default recipients :rammohanrao4me@gmail
+reply to list:rammohanrao4me@gmail
+exdcluded recipients:if we don't send any notification ,we mentioned here
+maximum attachment size:1
+click on default trigger:here more olptions are there like failure ,aborted,like somany options are there
+apply--save
+
+
+now goto dash board
+now select CIT -->SELECT WARDEPLOY-->configure 
+now remove the selection  of email notification
+and select add post build actions--select editable email notification
+project from:projct from ram 
+projct recipients list:rammohanrao4me@gmail,mohanlucky7777@gmail.com
+ projct replyto list:rammohanrao4me@gmail
+ content type :plain text
+ defaultsubject:war deploy
+ attach build log :attach build log
+ click on advancesettings
+ triggers:always
+ send to:recipient list
+ cancel developers
+ click on advnced
+ recipient list: rammohanrao4me@gmail
+ replyto :rammohanrao4me@gmail
+ content type : plaintext
+ project from :projct from ram
+ subject:wardeploy
+ attach build log:attach build log
+ under editabl email notification---select disable extended email publisher
+ apply ---save
+ build now
+ 
+ 

@@ -1,0 +1,96 @@
+docker images : to find the no of images
+docker ps -a :to find the no of containers
+docker pull imagename :to create the4 image
+docker run -d -ti imagename /bin/bash :create the container
+docker exec -ti containerid /bin/bash :using this instuction we navigate to that container
+docker exec -ti containerid ping www.google.com :used to connect the internet
+docker stop containerid
+docker rm conntainerid :to remove the container
+docker rmi imagename/imageid :remove the image 
+
+
+docker file :
+
+	docker images are created by either by pulling them online or by creating on our local machine.
+docker containers can be created by docker run command.once the docker container is started, 
+we have to mannually login to the containerabd perform the actions that we want the container to work with 
+docker provides another way to create images by using the docker file
+
+
+
+docker info :gives the detailes about image
+docker inspect :gives the network related information
+docker start (container id)
+docker pause (container 
+docker unpause (container id
+docker rmi $(docker images -a)  --all images will be deleted in one go 
+docker rm $(docker ps -a -q) :remove the all containers
+
+
+ 
+  Gitbucket image:
+ ----------------
+ - mkdir batch1
+ - cd vatch1
+ - vi Dockerfile
+ From java:latest
+ MAINTAINER ram info@google.com
+ LABEL env=prodution {label}
+ ENV apparea /data/app {environment variables}
+ Run mkdir -p $apparea  {while start the image this directory is created}
+ ADD ./gitbucket.war $apparea {add the file to this directory}
+ WORKDIR $apparea
+ CMD ["java","-jar","gitbucket.war"]  {run the gitbucket at the container start}
+ 
+ 
+after create the docker file build that file as image
+ - sudo docker build -t batch2/gitbucket:latest .
+
+To run that gitbucket image 
+ - sudo docker run -d -p 8080:8080 batch2/gitbucket
+To login to the running container
+ - sudo docker exec -ti (container id) /bin/bash
+ 
+ 
+ Jenkins Image:
+ --------------
+ From java:latest
+ MAINTAINER ram info@batch1.com
+ LABEL env=production
+ ENV apparea /data/app   apparea=/data/app
+ Run mkdir -p $apparea
+ ADD ./jenkins.war $apparea
+ WORKDIR $apparea
+ CMD ["java","-jar","jenkins.war"]
+______
+
+
+java --sudo yum intall
+mkdir softwares/
+wget .war
+place 
+java -jar 
+
+
+after create the docker file build that file as image
+ - sudo docker build -t batch3/jenkins:latest .
+
+To run that gitbucket image 
+ - sudo docker run -d -p 8080:8080 batch1/gitbucket
+To login to the running container
+ - sudo docker exec -ti (container id) /bin/bash
+
+
+Voume mapping in docker
+ local system ------> container data
+    sudo docker run -d -v /localsystem:/root/.gitbucket -p 80:8080 batch1/gitbucket
+	
+	docker run -d -v /home/ubuntu/batch3:/root/.gitbucket -p 8080:8080 cbt/gitbucket
+	
+	
+	during container start --local path to be synced to remote 
+	
+	during te removal --conatiner ---it will be synced local 
+ 	
+	
+	docker run = docker create + dcoker start  (image)

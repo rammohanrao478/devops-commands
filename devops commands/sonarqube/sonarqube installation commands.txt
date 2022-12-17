@@ -1,0 +1,43 @@
+#sonarqube installation
+#!/bin/bash
+amazon-linux-extras list
+amazon-linux-extras install java-openjdk11
+sudo yum install java-11-openjdk-devel -y
+cd /opt
+sudo yum install wget unzip -y
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.8.54436.zip
+unzip sonarqube-8.9.8.54436.zip
+cd 
+useradd sonaradmin
+chown -R sonaradmin:sonaradmin /opt/sonarqube-8.9.8.54436
+su - sonaradmin
+service sonar start
+cd /opt
+cd sonarqube-8.9.8.54436/
+cd bin/
+cd linux-x86-64
+./sonar.sh start
+
+
+
+maven setup
+
+export M2_HOME=/opt/apache-maven-3.8.5
+  export PATH=$PATH:$M2_HOME//bin
+  export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.b06-2.el8_5.x86_64/jre
+  export PATH=$PATH:JAVA_HOME/bin
+  
+  
+  https://www.sonarqube.org/downloads/
+
+
+ 
+https://devopscube.com/setup-and-configure-sonarqube-on-linux/
+ 
+ 
+  raju: c570b028db23384dc35d047e78505ce49e8f52b0
+  
+  mvn sonar:sonar \
+  -Dsonar.projectKey=raju \
+  -Dsonar.host.url=http://18.204.194.236:9000 \
+  -Dsonar.login=c570b028db23384dc35d047e78505ce49e8f52b0

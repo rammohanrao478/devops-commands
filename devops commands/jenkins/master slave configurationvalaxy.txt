@@ -1,0 +1,10 @@
+master slave configuration:
+---------------------------
+1)setup the jenkins server ie master
+2)set the slave server with same javaversion in the master
+3.go to master server-->manage jenkins--->mange nodes--->give the slave name with perminent access
+4.give the remote direcotry as /opt label name as java-node
+5.and give the some options and save it
+6.then clic on the node and click on the agent.jar--->then it is downloaded 
+7. then it can be up loaded to /opt folder of linux ec2 machine by using the "winscp app"
+8.then go to jenkins copy the instruction from jenkins to the sdlave machine

@@ -1,0 +1,247 @@
+installation of terraform:
+==========================
+https://developer.hashicorp.com/terraform/downloads
+
+sudo su -
+yum update
+yum install wget unzip -yum
+
+wget https://releases.hashicorp.com/terraform/1.3.6/terraform_1.3.6_linux_amd64.zip
+echo $PATH
+sudo unzip terraform_1.3.6_linux_amd64.zip -d /usr/local/bin
+ls -l /usr/local/bin
+terraform -v
+
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "AWSEC2Instance" {
+
+  ami = "ami-05723c3b9cf4bf4ff"
+  instance_type = "t2.micro"
+  security_groups = ["launch-wizard-75"]
+  key_name = "wind"
+  tags = {
+    name = "linux-ec2 by terraform"
+  }
+}
+
+
+
+
+
+multiple instances
+==================
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "AWSEC2Instance" {
+  count ="5"
+  ami = "ami-05723c3b9cf4bf4ff"
+  instance_type = "t2.micro"
+  security_groups = ["launch-wizard-75"]
+  key_name = "wind"
+  tags = {
+    name = "linux-ec2 by terraform"
+  }
+}
+
+terraform script for variables
+==============================
+
+variable 
+========
+variable "ami" {
+  description = "Amezon Machine Image"
+  default     = "ami-05723c3b9cf4bf4ff"
+}
+variable "instance_type" {
+  description = "amezone instance type"
+  default     = "t2.micro"
+}
+
+variable "instances" {
+  description = "total no of instances"
+  default     = "2"
+}
+
+
+mainfile
+========
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "AWSEC2Instance" {
+  count           = "${var.instances}"
+  ami             ="${var.ami}"
+  instance_type   = "${var.instance_type}"
+  security_groups = ["launch-wizard-75"]
+  key_name        = "wind"
+  tags = {
+    name = "linux-ec2 by terraform"
+  }
+}
+name displayed as sequence
+==========================
+mainfile
+========
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "AWSEC2Instance" {
+  count           = "${var.instances}"
+  ami             ="${var.ami}"
+  instance_type   = "${var.instance_type}"
+  security_groups = ["launch-wizard-75"]
+  key_name        = "wind"
+  tags = {
+    name = "linux-ec2 by terraform-${count.index}"
+  }
+}
+
+command for count value is not given in the ec2 machine
+=======================================================
+terraform apply -var instances="2" -auto approve
+
+# used for comments 
+// used for comments single line
+/* 
+1
+2
+3
+*/ used for multiple line comments
+ 
+ provider block
+ ==============
+ insted of giving the access key and secret access key in provider block  we can give as enviromental variables in bash profile
+ 
+ export AWS_ACCESS_KEY_ID = "KEY"
+ EXPORT AWS_SECRET_ACCESS _KEY_ID ="KEY"
+ 
+ 
+ #*# this terraform scripts ibn normal user also can run
+ 
+ install httpd using user data
+ =============================
+ vi httpd
+ #!/bin/bash
+ yum install httpd -y
+ systemctl enable httpd
+ systemctl start httpd
+ 
+ 
+ ---------------------------------
+ provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "AWSEC2Instance" {
+
+  ami = "ami-05723c3b9cf4bf4ff"
+  instance_type = "t2.micro"
+  security_groups = ["launch-wizard-75"]
+  user_data = "$(file(httpd))"
+  key_name = "wind"
+  tags = {
+    name = "linux-ec2 by terraform"
+  }
+}
+
+
+output:tf
+==========
+output "AWS_public_ip" {
+  description = "getting the ec2 instance public ip"
+  value       = "${AWS_instance.AWSEC2Instance.public_ip}
+}
+
+
+output "AWS_private_ip" {
+  description ="getting the ec2 instance private ip"
+  value       = "${AWS_instance.AWSEC2Instance.private_ip}"
+}
+
+
+security group
+==============
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_security_group" "securityram" {
+  description = "security group for ec2"
+  name        = "security"
+  vpc_id      = "vpc-0134713ae76a95763"
+  ingress {
+    description = "InBound Rules enable"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    description = "OutBound Rules enable"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags  = {
+    name = "security groups by ram"
+  }
+}
+
+IAM user creation
+=================
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_iam_user" "IAMuser" {
+  name = "ramu"
+}
+
+multiple iam users
+==================
+provider "aws" {
+  region = "us-east-1"
+}
+variable "iam_users" {
+  type    = list(string)
+  default = ["mithun", "ramu", "raju"]
+}
+resource "aws_iam_user" "iamuser" {
+  count = length(var.iam_users)
+  name  = var.iam_users[count.index]
+}
+ 
+s3 bucket
+=========
+resource "aws_s3_bucket" "s3bucket" {
+  bucket      = "s3bucketsimple"
+  acl         = "private"
+  versioning {
+    enabled = true
+  }
+  tags = {
+    name = "s3 bucket created"
+  }
+}
+
+elastic ip with provider name:
+==============================
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "awsec2instanec" {
+  ami             = "ami-0b0dcb5067f052a63"
+  instance_type   = "t2.micro"
+  security_groups = ["launch-wizard-75"]
+  key_name        = "wind"
+  tags = {
+    name = "ec2instane"
+  }
+}
+resource "aws_eip" "rameip" {
+}
+resource "aws_eip_association" "ram_eip_assoc" {
+  instance_id   = aws_instance.awsec2instanec.id
+  allocation_id = aws_eip.rameip.id
+}

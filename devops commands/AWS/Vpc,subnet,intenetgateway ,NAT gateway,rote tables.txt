@@ -1,0 +1,38 @@
+AWS 
+
+Vpc,subnet,intenetgateway ,NAT gateway,rote tables
+---------------------------------------------------
+1.create a vpc named it as myvpc
+2.create two subnetes named it as publlic subnet,private subnet
+3.create  private route table ,public routetable is formed when the proces of creation of subnets and vpc
+4.give the subnet assosiation,goto route tables assign private routetables to private subnet and public routetable
+ public subnet 
+5.create an internet gateway,attch it to the vpc
+6.go to route table select public subnet and goto routes add rule ,then add the internet gateway
+7.goto ec2 dash board create two ec2 instances
+   a)public vpc ec2  b)private vpc ec2
+8.connect public vpc ec2 through gitbash.ping google.com
+9.now create vpc.pem file through through vi editor
+10.give the permision
+    chmod 400 vpc.pem
+11.then give 
+ssh -i "vpc.pem" ec2-user@privateipaddress
+
+12.try to connect to google,it will not connect to google
+13.now we attch the NAT gateway to private subnet
+14.now we connect it to google
+
+peering connection:
+-------------------
+1.goto ec2 dashboard,create default-vpc-ec2
+2.goto vpc dashboard create a vpc named it as peering vpc--range-29.0.0.0/16
+3.create a subnet named it as peering subnet
+4.create peering-vpc-ec2.
+   a.at the 6th stage of creation we select 
+      ssh 22 custom 20.0.0.0/16
+5.now we have to create peering connection:requster--defailtvpc,accepter---peeringvoc
+   goto actions ---click on acceptenece request
+6.now goto peering vpc route table add peering connection and goto goto default vpc rout table
+ add peering connction for twoway communication
+7.goto peering vpc ec2 and select securitry group--edit inbound rules--add the private ip of default vpcec2
+   ssh 22 custom private ip of defaultvpc ec2

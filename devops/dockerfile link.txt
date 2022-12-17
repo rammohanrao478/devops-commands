@@ -1,0 +1,89 @@
+sudo apt-get update
+sudo apt-get 
+sudo apt-get install curl
+sudo apt-get install apt-transport-https
+sudo apt install virtualbox virtualbox-ext-pack
+sudo 
+what is pod?
+pod is nothing but logical group of containers
+but entire will have same ip adress
+
+
+
+
+
+
+mkdir demo
+cd demo
+gedit webapplication.yml
+gedit mysqldatabase.yml                 
+kubectl apply -f webapplication.yml
+kubectl apply -f mysqldatabase.yml
+kubectl get deployments
+gedit webservice.yml
+gedit mysqlservice.yml
+kubectl apply -f webservice.yml
+kubectl apply -f mysqlservice.yml
+kubectl get services
+kubectl exec-it container id of webapplicatgion bash
+nano var/www/html/index.php
+kubectl exec-it container id of mysql bash
+mysql -u root -p edureka
+
+
+
+
+
+
+
+
+
+
+dockerfile link
+
+https://takacsmark.com/dockerfile-tutorial-by-example-dockerfile-best-practices-2018/
+https://docs.docker.com/engine/reference/builder/
+
+Dockerfile examples:
+--------------------
+https://github.com/komljen/dockerfile-examples
+
+
+
+github link
+-----------
+https://github.com/mavrick202/dockertest1
+https://github.com/docker-library/php/blob/f4baf0edbc4e05e241938c68bcc7c9635707583d/7.2/stretch/apache/Dockerfile 
+<script src="https://gist-it.appspot.com/https://github.com/docker-library/php/blob/f4baf0edbc4e05e241938c68bcc7c9635707583d/7.2/stretch/apache/Dockerfile"></script>
+https://store.docker.com/images/php
+
+docker compose link
+-------------------
+https://docs.docker.com/compose/overview/
+
+
+
+kubectl link
+============
+https://kubernetes.io/dochs/tasks/tools/install-kubectl-linux/
+
+minikube link
+=============
+
+https://minikube.sigs.k8s.io/docs/start/
+
+
+dockerfile verses docker compose
+docker file:
+------------
+1. image download
+2.container startusing the image
+3. installednessasary packages
+4.cobnverted to our coustum image
+
+docker fille is used only for creating containers
+docker compose(2web,2app, 2db)can be ued to deploy the whole application.it is used for crteate the multiple containers same time as well,
+deploy them
+
+
+

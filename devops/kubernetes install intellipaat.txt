@@ -1,0 +1,127 @@
+https://github.com/gkdevops/kubernetes-code/
+
+https://github.com/gkdevops/kubernetes-code/blob/master/install.sh
+enter the following in master and nodes :
+========================================
+
+vi install.sh
+# Swap memory
+swapoff -a
+
+# Install Docker
+
+sudo apt-get update
+
+sudo apt-get install -y\
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+# Install Kubernetes
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+#sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-get install -y kubelet=1.21.1-00 kubeadm=1.21.1-00 kubectl=1.21.1-00 #--allow-change-held-packages
+sudo apt-mark hold kubelet kubeadm kubectl
+
+
+enter the follolein command in master only
+
+kube init
+kubectl get nodes 
+kubectl get pods --all-namespaces
+kubectl get pods --namespace kube-system
+
+# CNI Plugin Installation:
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
+ vi pod.yml
+ # Section 1 - API Version
+apiVersion: v1
+# Section 2 - Which type of Object we want to create
+kind: Pod
+# Section 3 - Meta data of the object we are creating
+metadata:
+  name: sample-pod
+  labels:
+    app: sample
+    env: dev
+# Section 4 - The actual options we need for the object we want to create
+spec:
+  containers:
+  - name: sample-container
+    image: nginx:latest 
+
+kubectl apply -f pod.yml
+
+kubectl get ns 
+
+kubectl get pods
+
+kubectl delete -f abc.yaml
+
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.27.188:6443 --token 6v95rb.zc9mn8fls7vy9k99 \
+        --discovery-token-ca-cert-hash sha256:d4694736d367bbe50676146dda3acfc21648317f5b466a1f35e648ffd5d5359b
+		
+		
+		
+		
+sudo kubectl cluster-info
+
+sudo kubectl config get-clusters
+
+kubectl config get-contexts
+
+sudo kubectl config  current-context
+
+sudo kubectl config set-context context1 --cluster=cluster1 --user=user1 --namespace=namespace1------------>to crate context
+
+sudo kubectl config use-context context1-->it is used to switched  to the context
+
+sudo kubectl config get-contexts
+
+sudo kubectl config delete-context context1
+
+now i want to goto name spaces
+================================
+sudo kubectl get namespaces
+
+sudo kubectl credate namespace namespace1
+
+sudo kubectl get namespaces
+
+to see the API server
+=====================
+sudo kubectl api-versions

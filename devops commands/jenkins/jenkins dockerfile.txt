@@ -1,0 +1,10 @@
+FROM ubuntu:latest
+RUN apt-get update -y
+RUN apt-get install openjdk-11-jdk -Y
+RUN echo "JAVA_HOME=/usr/" >> .bshrc
+ADD https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz /tmp
+RUN cd /tmp && tar -xvf apache-tomcat-8.5.81
+RUN cd /tmp && apache-tomcat-8.5.81 /opt/
+EXPOSE 8080
+ADD https://get.jenkins.io/war-stable/2.346.2/jenkins.war /opt/apache-tomcat-8.5.81/webapps/
+CMD "/opt/apache-tomcat-8.5.81/bin/catalina.sh","run"

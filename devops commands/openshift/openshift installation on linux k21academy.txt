@@ -1,0 +1,74 @@
+https://developers.redhat.com/
+
+
+
+instructions
+-------------
+sudo su 
+yum -y update
+reboot
+
+sudo su -
+uname -sr 
+
+then we have to attach with redhat developer subscription for that we have to use following command 
+
+subscription-manager register
+#give the 
+username:rammohanrao4me@gmail.com
+Passwd:BDNPA9009A
+subscription-manager refresh
+subscription-manager attach --auto
+
+yum install -y yum-utils device-mapper-persistent-data lvm2
+
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+subscription-manager repos --enable=rhel-7-server-extras-rpms
+
+yum install -y docker-ce docker-ce-cli containerd.io
+
+systemctl start docker
+systemctl enable docker
+systemctl status docker
+ 
+yum install -y wget
+
+#tee etc/docker/daemon.json<<EOF
+{
+    "insequre-registeries":[
+    "172.30.0.0/16"
+    ]
+  }
+ EOF
+ 
+ vi /etc/containers/registeries.conf
+[registeries.insecure]
+ registeries = ['172.30.0.0/16']
+
+
+systemctl daemon-reload 
+systemctl restart docker 
+systemctl status docker
+
+echo "net.ipv4.ip_forword=1" | sudo tee  -a /etc/sysctl.conf
+sysctl -p 
+cd
+wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
+tar -xvf openshift-origin-client-tools*.tar.gz
+cd openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit
+ls
+cp oc kubctl /usr/bin
+oc version
+
+oc --help
+
+oc cluster up --public-hostname=<vertulemachine public ip adress>
+oc cluster status
+
+oc login -u system:admin
+oc create user rammohan
+oc adm policy add-cluster-role-to-user cluster-admin ram-rolebinding-name=cluster-admin
+oc cluster status
+now we can get the url and enter it in new tab we can get the openshift webconsole
+
+k21academy

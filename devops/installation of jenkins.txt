@@ -1,0 +1,67 @@
+jenkins installation on linux:
+==============================
+launch one ec2 instance
+login to the instance
+
+enter the following commands
+----------------------------
+sudo su - 
+
+vi jenkins              ------------>copy and paste the follwing commands into the vi editor
+
+#!/bin/bash
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum install -y java-1.8.0-openjdk
+ sudo yum install -y java-1.8.0-openjdk-devel 
+yum install jenkins -y 
+wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+tar -xvf apache-maven-3.8.6-bin.tar.gz -C /opt
+yum install -y git
+service jenkins start
+
+now give the permissions to the above file------------>now enter the following commands
+-------------------------------------------
+chmod 777 jenkins
+
+sh jenkins---------->now start jenkins installation will starts
+
+wait for few minutes for installation of jenkins
+
+
+now jenkins will be running on our system
+
+now check the status by using following commands
+
+service jenkins status
+
+now goto security group of our instance and enable the port number 8080.
+now copy the public ip of the instance and 8080
+
+ex:72.34.234.32:8080
+
+it will display like this
+
+path:/var/lib/jenkins/secets/initialAdminpassword
+
+password:
+
+
+now we have to copy the path and enter it into the putty or ec2 terminal like thhe following 
+
+cat /var/lib/jenkins/secets/initialAdminpassword
+now here display the password with 40 charecters length
+
+now copy the 40 charecters length password and enter the password
+
+
+ 
+
+
+
+
+ 
+
+
+
+

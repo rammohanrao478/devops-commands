@@ -1,0 +1,86 @@
+				cloud watch
+let me create windows machine
+--->cloud watch is amonitoring service
+---->it can shows cpu utilization ,memory utilization
+---->mechine performence interms of cpu utilizalization
+---->performencecalculated in tems of metrics
+---> network i/o 
+--->select machine and click on monitoring
+---> here we see the cpu utilization disk reads,disk read operations
+--->aws only provide this cloud watch
+--->click on cpu utilization after some time it shows some result
+--->if click on monitoring option it can shows the graphs of memory and cpu utilization
+--->all  these graphs can provided by cloud watch
+---> go to  clowd watchservice in AWS
+--->click on ec2 machine ,we can get the all the infermation regaarding cpu util;ization in graphs
+--->closely observe we can see the dot in cpu utilization graph 
+--->click we can see the utilization  for one day or 2days or last one month
+--->click on custom  ,we can see the last opne month utilization or our required duiration
+ --->from partcular date to another date we can see the system performance or utillization
+ --->we can see the last 15 minutes also we can see the utilization
+ --->we can create our won graphs in our aws 
+ --->go to cloud watch dashboard 
+ --->I can create my won dash board
+ --->click on create dash board
+ --->give the name like flipkart
+ --->it asaking you what type of graph you want. select first graph .here it asking you what do you want to check.i sewlect ec2 metrics
+--->here search for cpu in search tab
+--->   we can see the last 1hr and last 15 mins
+--->click on create we can get the graph over here
+-->now i want to create one more graph 
+--->click on add widget
+--->select stacked area trype graph
+---> click on select
+--->  search for cpu 
+--->select create
+--->now click on addwid get to create one more graph
+---> select number graph 
+--->click on next
+--->select ec2--->click on perinstance metrics-->search for cpu
+--->select windows regarding cpu utilization--->click on create 
+--->it will direwctly give the number
+---> now click on save dash board
+--->when you want see the graphs or performence just click on dash board name
+---> evry time iit is not posible to all graphs 
+--->so alaram is used for that ae can create  click on alarm option
+-->whenever system reaches 650% alaram can alert us 
+-->alaram can provide only alert
+--->alaram  get triggered the SNS .SNS provide notification
+--->SNS provide mail or message notification
+---->go to alarams click on create alaram  
+click on metrics
+--->select ec-2
+--->per instance 
+--->search for cpu on search bar
+--->select windows cpu utilization
+--->click on select metrick
+--->it shows the graph and scroll down
+--->give the value under define threshold value as 60
+--->click on next
+--->select create new toppic
+--->give the email id for sns
+---> click on create topic
+-->goto sns in aws
+-->see the details regarding our alaram
+-->goto mail and confirm the notification 
+--->goback to sns and refresh  it wiil show you  confirmed
+---> go back to alaram give the any name to alaram 
+--->discription is optional
+--->click on create alaram
+--->now alaram get created 
+--->righht now it will show you cpu utilizalization
+ --->go to ec2 dash boasrd and see the alaram status .we select that utilization reaches 60% it can provide the notification
+ to connect to windows machine follow the following steps
+ -->click  on connect
+ --->click on download remote desktop file
+ --->click on get password
+ --->click choose file 
+ --->upload the key file and decript the passwd
+ --->copy the passwd 
+ --->click on your rdc  file and connect 
+ --->paste your passwd  and click on ok
+ -->now we are connect to the windows machine
+ --> if utilizatipon reaches 60% it will send notification
+ metricks are used for units for knowing the cpu utilization like distance in km and water in ltr like that matricks
+ click on rules it gives the notifications about autoscaling like that and also for s3 also
+ 

@@ -1,0 +1,72 @@
+						MAVEN
+ if any code like java ,python is there it can be packaged by maven
+ it will generate jar or war file
+ maven can do the code in to packages like jar and war files
+ these packages are stored in to the artifactory
+ these artifacts are stored into the jfrog
+ 
+ maven life cycle
+ 1)validate
+ 2)test
+ 3)compile 
+ 4)package
+ 
+ #for doing the life cycle it can follow the  some formate in this we have following
+ which is called GAV formate
+ G --->GROUP ID
+ A---->artifact id
+ V---->VERSION ID
+ all the above infdormation is stored in pom.xml file
+ before going to life cydcle steps we have to complete G A V formate
+ entire infomation in pom.xml
+ going to create  ec2 machine
+ --->for maven we have to install java
+ --->yum install java-1.8.0-openjdk -y 
+ --->yum install java-1.8.0-openjdk-devel -y for background running process
+ --->yum install maven -y 
+ --->ll
+ ---->i have to create maven sample project
+ --->for that we have to use the following command for creating sample mvn project
+ --->mvn archetype:generate
+ once it create it can give the uniqu number it displyed at the end of the  cretion of sample project like 1854
+ finallly it asking us 8 options
+ choose  a number: i select no: 8:6
+ --->define value for property 'groupid':com.digi.proj1
+ --->artifact id:javaApp
+ --->version 1.0-snapshot: :
+ just press enter only
+ enter Y
+ NOW SAMPLE project is created
+ --->ll
+ --->cd javaApp/   :inside this src and pom.xml are there 
+ --->inside src our source code will be there
+ --->pom.xml have all GAV information
+ --->vim pom.xml
+ --->yun install tree
+ --->tree
+ --->cd src/  :inside src main and test directories arew there
+ ---> main--->java-->com--->?digi-->proj1-->javaApp
+ --->cd ~
+ -->ll
+ --->cd javaApp/
+ --->ll
+ 
+ now we have to follow mvn lifecyle steps
+ --->mvn validate :it has to check the code like check syntex
+ --->mvn compile : once it is completed
+ --->ll
+ ---->target directory is created 
+  target--->classes
+ inside target folder only jar file is created
+ ---->mvn test
+--->ll
+--->cdwtarget
+--->noe we see more three folder is created
+ --->mvn package
+ --->ll 
+ -->cd target/
+ --->ll
+ we see jar file is there
+ --->tree
+ vim test-classes
+ 

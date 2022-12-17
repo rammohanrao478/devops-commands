@@ -1,0 +1,13 @@
+installation of jenkins war file:
+=================================
+
+java requirements:
+------------------
+sudo update-alternatives --config 'java'
+sudo yum install java-11-openjdk
+sudo update-alternatives --config 'java'
+
+jenkins war package:
+--------------------
+
+wget https://get.jenkins.io/war-stable/2.361.1/jenkins.war

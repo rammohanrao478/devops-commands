@@ -1,0 +1,146 @@
+         kubernetes
+--->kubernetes is same as elastic container service but in the case of ECS ec2 is created along with cluster
+--->but in kubernetes ec2 instance is seperatly created 
+--->these insances are called as worker nodes in side the clusterand another ec2 instance is createdf out side of cluster
+---> this is called master node
+in master node we have to install git,IAM authendicator,kubectl
+now we have to giove control of cluster for that give access key and secret key
+by using the dockrer commands we create the containers inside the worker nodes.but here these containers are called as pods
+in side tjhe pod we can run service
+service --->checking credit cord no
+--->using yaml files we can create service inside the container
+---> in any container we have to specify size of memory and cpu
+--->if any pod is down kubernetes provide another container
+--->we can go to kubernetes official website
+--->kubernetesis also called k8
+--->autoscalling is there in the k8
+--->more than 150 misro services running in k8
+--->roleback feature is also there here.if any service is unwantedly created that can be easily removed by role back(|go to past)
+--->we have loadbalancer for pods
+--->in the case of ECS loaadbalaner is not there.kubernetes can provide l;oad balencer is called ingress
+
+
+go to EKS in AWS--->
+NAME:banking
+version:1.21
+role
+go to IAM 
+click on create role
+select EKS
+select your case:EKS cluster
+next
+eks policy 
+give the name
+create role
+go back to cluster
+next
+default VPC and 3 default subnets
+click on next
+control pannel logs :enable all the things or disable its not problem
+now see the review
+click on create
+now the start creating cluster
+go to aws dash board
+create a normal ec2 machine
+it is named it as master node
+ connect to master node via git or linux terminal
+go to goole 
+search install IAM authendicator
+click on first one
+select linux
+copy the first command
+give it in terminal
+go back to google 2 nd step is optinal so copy the third command and give it teminal
+go bck and copy sep-4 and give in terminal
+copy step-5 and give it in terminal
+copy step-6 and paste it in IAM authendicator
+
+go back to goole search for install kubectlin aws
+select first one
+select linux
+version number 1.21
+slect the first url and paste it in terminal
+go to step 3 and paste it in terminal
+step no 4 is paste in terminal 
+step no -5 is optional
+for checking kube ctl installed or not
+enter "kubectl version --short --client"
+
+now we give accses kry and secret key 
+for that enter the command in terminal
+aws configure
+it asks the access key: for this go to aws account and select security credintials
+
+click on access keys
+click on create new access key 
+copy the access key and give it teminal
+copy secret key and give it in teminal
+enter(region name)
+enter
+
+yum install git -y
+
+git init
+
+kubecxtl get svc :it gives the cluster infermation
+aws eks --region give the region name (us east-2) update-kubeconfig --name cluster name(banking)
+export KUBECONFIG =/root/.kube/config
+kubecxtl get svc
+
+now we have to create worker nodes
+kubecxtl get nodes: this gives no.of W.N in cluster
+
+for this go to cluster and click on configuration and scroll down click on compute
+click on add node group
+
+name it as creditcord no
+give role ,before going to that first creat role for that goto IAM SELECT CREAT ROLE
+select ec2
+next
+we have to give three permissions (policies)
+select EKS_CNI policy 
+select EKS_WORKER noode policy
+select container rigistry read only 
+role name :work
+click create role
+go back to eks select role
+click next
+amazon ec2 linux 64_8
+capacity type:ondemand
+instance type: t3.medium
+disk size 20 gb
+node group scalling configuration:2 2 2
+node group update configuration
+select number
+value---1
+enable configure ssh access to nodes
+next
+review
+scroll down 
+click on create
+after some time node get created
+check them in ec2 dash board and cluster also
+go to terminal
+kubectl get nodes
+these worker nodes  created inside the cluster
+now we have to createw pods(containers) inside the nodes
+yamal files are required for creating pods
+  
+
+
+
+   
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+WHAT IS DOCKER ?
+ docker is a containeraisation platform  that combines all our application in a package so that we have we have all dependenicesto run our applications in any environment.
+ 
+1. docker --version
+ docker pull ubuntu
+ docker run -it -d ubuntu   : This command is used to create a container from an image
+ 
+2.docker ps -a : no  of containers are present 
+ 
+3.docker exec -it <container id> bash   :This command is used to access the running container
+
+docker commit <conatainer id> <username/imagename>      :This command creates a new image of an edited container on the local system
+
+
+4.docker push
+Usage: docker push <username/image name>   :LThis command is used to push an image to the docker hub repository
+
+5.docker rm
+
+Usage: docker rm <container id>........>This command is used to delete a stopped containers
+
+6.docker rmi
+
+Usage: docker rmi <image-id>
+
+This command is used to delete an image from local storage
+
+7.docker build
+
+Usage: docker build <path to docker file>
+
+This command is used to build an image from a specified docker file
+

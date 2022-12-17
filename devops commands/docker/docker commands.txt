@@ -1,0 +1,151 @@
+sudo su-
+docker --version
+yum install docker -y
+docker --version
+docker ps -a :it gives how m,any containers are there our machine
+systemctl status docker
+systemctl start docker
+systemctl enable docker
+docker ps -a
+docker images
+docker pull mysql :image getting download here
+docker pull java   :mage getting download here
+docker run -it --name ram java /bin/bash:this is for creating a containers
+docker top :this command gives the cpu utilization and how maqny process are running over how
+docker stats :it will show you how many process are running and how much cpu utilizatiion is there
+docker top container id:it gives how many process are running in the3 container
+docker system df :it will gives the how many containers,image,volumes are running 
+docker system df -v :it gives the much more detailsabout containers,image,vollumes
+docker exec -it ram bash due to this with out creating container,goto inside the container
+these containers are acts vertuval machines with light weight
+docker logs container name :it gives what you doing in the container
+bofore going to delete container it must be stop
+docker stop container named
+docker rm container name or id
+docker rmi image name or id 
+history:it gives the how many instructions you can used
+container volume:along with the container we can create a volume inside the container using following command
+docker run -it --name c1 -v /myvol python bash
+now we are in inside the volume ,we can create folder or file inside the volume
+ls
+touch asd.txt
+we can share same volume bet ween two contaioners for that
+docke run -t --name c2 --privileged=true --volumes from c1 python bash
+ls
+cd myvol/
+
+
+i want to connect my container to RDS Now can create RDS in aws
+it will takes time to create arround 5 to10 minutes
+go to rds instance go to actions and edit inbound rule select all trafic 
+now we can start mysql container by using following command
+docer exec -it mysqlcontanername bash
+ now we are inside my sql container
+mysql -h (rds end point) -p 3306 -u user nameof rds -p
+give the password that is in the time of creating  RDS
+now you are connct to rds to container
+mysql> show database
+docker images
+docker run -d -p 80:80 httpd :here image is created and volume also created here
+docker ps -a
+docker images
+now connect httpd to container
+ 
+go to ec2  enable the port number 80
+docker exec-it container id bash: go to inside the httpd container 
+ls
+ cd hddocs
+          cat index.html
+
+when you are enable the port number 80 we can copy the instance id to crome4 wecan get the message, the same message get from the above container in git bash terminal using above command
+ 
+docker 	pull centos
+docer run -it --name a1 centos bash
+yum telnet -y :here tlnet is installed inside the a1 container.now every time i have to go insiide the container and use the telnet.so i don't want to go inside the container, i want use the telenet for that we create our own image.now we write a script for creating image
+vim dockerfile
+FROM centos
+RUN mkdir -p/snapdeal:p-permission,you can give any foldername  like snapdel
+docker images
+ll:now display the dockerfile
+docker buid -t raj . :it can exicute our script and create an image
+docker images
+docker run -it --name a2 raj bash        
+vim dockerfile
+FROM centos
+RUN mkdir -p/snapdeal
+RUN yum install telnet -y
+docker images
+now i want to create one more image for that we don't do any thing because once you write docker file script it cat create image by using the following command
+docker build -t venkat
+in this image telnet is also create
+docker run -it --name a3 venkat bash
+now we are inside the container 
+telnet
+telnet>
+because telnet is instaalled inside the container
+now i want to create volume inside the container for that we have to edit the dockerfile
+vim dockerfile
+FROM centos
+RUN mkdir -p/snapdeal
+RUN yum install telnet -y
+VOLLUME myvol
+now i want to create another image for that
+docker buid -t dell .
+docker images
+docker run -it --name d1 dell bash
+ls
+telnet
+exit
+exit
+now i want to create image without going root directory for that edit the dockerfile
+vim dockerfile
+FROM centos
+RUN mkdir -p/snapdeal
+RUN yum install telnet -y
+VOLLUME myvol
+WORKDIR myvol
+docker images
+docker build -t rana
+docker images
+docker run -it --name d3 rana bash
+due to above command container is created as well as we are in myvol
+exit
+vim dockerfile
+FROM centos
+RUN mkdir -p/snapdeal
+RUN yum install telnet -y && yum install iputils -y
+VOLLUME myvol
+WORKDIR myvol
+docker images
+docker buid -t acer .
+docker images
+vim dockerfile
+FROM centos
+RUN mkdir -p/snapdeal
+RUN yum install telnet -y && yum install iputils -y
+VOLLUME myvol
+WORKDIR myvol
+ENV name prod
+docker build -t lenova .
+docker images
+docker run -it --name d4 lenova bash
+if i want to copy an image from my ec2 machine to myvolume inside the container for that we have to edit the file
+touch ads.txt :empty file is crteated inside the ec2 
+that file is created by following script
+vim dockerfile
+FROM centos
+RUN mkdir -p/snapdeal
+RUN yum install telnet -y && yum install iputils -y
+VOLLUME myvol
+WORKDIR myvol
+ENV name prod
+COPY /file1 /myvol
+the remaining commands are also added here
+CMD ls
+EXPOSE 80
+ENRTYPOINT [ping]
+
+
+
+
+docker exec -it cb2370693cea /bin/bash --->inside the continer

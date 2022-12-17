@@ -1,0 +1,83 @@
+  1  mkdir softwares
+    2  cd softwares/
+    3  sudo yum install wget
+    4  wget https://downloads.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
+    5  wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.76/bin/apache-tomcat-8.5.76.tar.gz
+    6  wget https://github.com/gitbucket/gitbucket/releases/download/4.36.1/gitbucket.war
+    7  wget https://get.jenkins.io/war-stable/2.289.3/jenkins.war
+    8  cd
+    9  cd /
+   10  ls -altr
+   11  sudo chown ec2-user:ec2-user /opt
+   12  ls -altr
+   13  cd
+   14  cd softwares/
+   15  ls -altr
+   16   sudo yum install -y java-1.8.0-openjdk
+   17  sudo yum install -y java-1.8.0-openjdk-devel
+   18  ls -altr
+   19  tar -xvf apache-tomcat-8.5.76.tar.gz -C /opt
+   20  cd
+   21  cd /opt
+   22  ls -altr
+   23  cd apache-tomcat-8.5.76
+   24  find -name context.xml
+   25  vi ./webapps/host-manager/META-INF/context.xml
+   26  vi ./webapps/manager/META-INF/context.xml
+   27  cd conf/
+   28  ls -altr
+   29  cp -p tomcat-users.xml tomcat-users.xml_bkp
+   30  cd ../
+   31  cd conf
+   32  vi tomcat-users.xml
+   33  cd ../
+   34  cd bin
+   35  ls -altr
+   36  ./startup.sh
+   37  ps -ef | grep "java"
+   38  cd
+   39  cd softwares/
+   40  clera
+   41  clear
+   42  cd
+   43  cd /opt
+   44  ls -altr
+   45  cd apache-tomcat-8.5.76
+   46  ls -altr
+   47* cd
+   48  pwd
+   49  cd
+   50  cd softwares/
+   51  cp -p jenkins.war /opt/apache-tomcat-8.5.76/webapps
+   52  gitbucket.war /opt/apache-tomcat-8.5.76/webapps
+   53  gitbuckt.war /opt/apache-tomcat-8.5.76/webapps
+   54  ls altr
+   55  ls -altr
+   56  cp -p gitbucket.war /opt/apache-tomcat-8.5.76/webapps
+   57  cat /home/ec2-user/.jenkins/secrets/initialAdminPassword
+   58  clear
+  61  ls -altr
+   62  cd softwares/
+   63  ls -altr
+   64  cd
+   65  tar -xvf apache-maven-3.8.4-bin.tar.gz -C /opt
+   66  cd softwares/
+   67  tar -xvf apache-maven-3.8.4-bin.tar.gz -C /opt
+   68  cd
+   69  cd /opt
+   70  ls -altr
+   71  cd apache-maven-3.8.4
+   72  ls -altr
+   73  cd
+   74  ls -altr
+   75  cp -p .bash_profile .bash_profile_bkp
+   76  ls -altr
+   77  vi .bash_profile
+   78  ./..bash_profile
+   79  ./.bash_profile
+   80  cd softwares/
+   81  vi .bash_profile
+   82  cd
+   83  vi .bash_profile
+   84  clear
+   85  history

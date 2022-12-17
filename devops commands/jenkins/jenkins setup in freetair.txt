@@ -1,0 +1,15 @@
+ 2  sudo yum install wget
+    3  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+    4   sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+    5  sudo yum install epel-release
+    6  sudo yum install java-11-openjdk
+    7  yum install fontconfig java-11-openjdk
+    8  clear
+    9  sudo yum install epel-release
+   10  sudo yum install jenkins -y
+   11  systemctl status jenkins
+   12  systemctl start jenkins
+   13  sud  systemctl start jenkins
+   14  sudo systemctl start jenkins
+   15  cat /var/lib/jenkins/secrets/initialAdminPassword
+   16  sudo cat /var/lib/jenkins/secrets/initialAdminPassword

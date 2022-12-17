@@ -1,0 +1,26 @@
+sudo yum update -y
+sudo yum install wget unzip -yum
+sudo yum install java-1.8.0-openjdk-devel
+sudo yum module list |grep postgresql
+sudo yum install @postgresql:10
+sudo yum install start postgresql
+sudo yum install enable postgresql
+sudo su - postgres
+creatuser sonar
+psql
+CREATE USER sonar WHITH ENCRYPTED PASSWORD 'sonar'
+CREATE DATABASE sonarqube;
+GRANT ALL PRIVILEGES ON DATABASEsonarqube to sonar;
+\q
+exit
+
+modify below file
+-----------------
+sudo vi /var/lib/pgsql/data/pg_hba.conf
+local all sonar md5
+
+install sonarqube
+-----------------
+cd /opt/
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.8.54436.zip
+unzip sonarqube-8.9.8.54436.zip

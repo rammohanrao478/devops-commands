@@ -1,0 +1,37 @@
+installation gitbucket and maven on ubuntu
+----------------------
+sudo apt install -y default-jdk
+curl -s  https://api.github.com/repos/gitbucket/gitbucket/releases/latest |grep browser_download_url  |  cut -d '"' -f 4  | grep '\.war$' | wget -i -
+sudo groupadd -g 555 gitbucket
+sudo useradd \
+  -g gitbucket --no-user-group \
+  --home-dir /opt/gitbucket --no-create-home \
+  --shell /usr/sbin/nologin \
+  --system --uid 555 gitbucket
+  sudo mkdir /opt/gitbucket
+  sudo mv gitbucket.war /opt/gitbucket
+  sudo chown -R gitbucket:gitbucket /opt/gitbucket
+  
+  
+  sudo vim /etc/systemd/system/gitbucket.service
+  
+  # GitBucket Service
+[Unit]
+Description=Manage Java service
+
+[Service]
+WorkingDirectory=/opt/gitbucket
+ExecStart=/usr/bin/java -Xms128m -Xmx256m -jar gitbucket.war
+User=gitbucket
+Group=gitbucket
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now gitbucket
+sudo systemctl status gitbucket

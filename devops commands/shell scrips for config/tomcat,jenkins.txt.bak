@@ -1,0 +1,17 @@
+tomcat,jenkins,maven packages shell script
+
+#!/bin/bash
+echo " installing  the required packages"
+mkdir softwares
+cd softwares/
+sudo yum install wget 
+wget https://downloads.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz
+wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.78/bin/apache-tomcat-8.5.78.tar.gz
+wget https://github.com/gitbucket/gitbucket/releases/download/4.36.1/gitbucket.war
+ wget https://get.jenkins.io/war-stable/2.289.3/jenkins.war
+sudo chown ec2-user:ec2-user /opt
+sudo yum install -y java-1.8.0-openjdk
+ sudo yum install -y java-1.8.0-openjdk-devel
+ tar -xvf apache-tomcat-8.5.78.tar.gz -C /opt
+ tar -xvf apache-maven-3.8.5.tar.gz -C /opt
+ echo "installing is completed" 

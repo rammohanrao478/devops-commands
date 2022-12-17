@@ -1,0 +1,28 @@
+ __email notification
+ ---------------------
+ 
+ 1.Installed pluins  
+ 2.confiure system 
+ 
+ 
+ __
+ login jenkins 
+ goto cpnfihure option and check which mail is provided during your id creation 
+ navaigate manage jenkins -->configure system--->and go to email notification
+ 
+ Provide Jenkins URL : http://65.0.97.39:8080/jenkins/
+ System Admin e-mail address : **********@gmail.com   ( Should be match what ever given in confgure)
+ Under E-mail Notification section
+ SMTP server: smtp.gmail.com
+ Default user e-mail suffix : @gmail.com
+ click on advance
+ Use SMTP Authentication  --provide maila id and it's passowrd 
+ Use SSL : enable
+ SMTP Port : 465   
+ Reply-To Address : rajudevops30@gmail.com
+ Test configuration by sending test e-mail --provide mail  ( To check the connection in between ur Jenkins and mailid )
+ 
+ At mail end ..
+ you should be login and it supposed to on - Allow less secure apps should be on ( account -->security)
+ 
+ https://myaccount.google.com/u/2/security?hl=en_GB

@@ -1,0 +1,107 @@
+docker basic commands:
+docker version
+create an image
+docker pull image name
+ex:docker pull hello-world
+tocreate a container:
+docker run -d -ti image name /bin/bash
+to login to container
+docker exec -ti container id /bin/bash
+docker stop container id
+docker rm containerid
+docker ps :givers only running container information
+docker ps -a
+docker -d -ti containerid ping www.google.com
+docker stats :gives the cpu utilization
+docker images
+
+
+docker file:
+vi Dockerfile 
+docker build -t gitbucket .
+docker run -d -p 8080:8080 gitbucket  :to run the git buicket or jenkins
+docker logs shanumber:to enable the gitbucket
+
+
+docker volumes
+1.mkdir test
+   cd test
+   create new repository in gitbucket and name it as aftervolume 
+   clone it in the test
+goback to putty
+
+docker run -d -p 8080:8080 gitbucket -v /home/ubuntu/gitbucket:/root/.gitybucket gitbucket to run the container along with volume
+docker logs shanumber :goto chrome and we can start the git bucket
+
+docker stop containerid
+docker	rm containerid
+now goto gui we coan't get gitbucket
+docker run -d -p 8080:8080 gitbucket -v /home/ubuntu/gitbucket:/root/.gitybucket gitbucket
+now we can recover our data
+  
+  
+  
+  docker networks
+docker network ls
+docker inspect networkid:it can provide whole information with ip number
+
+docker run -ti -d --name centcontainer1 centos
+docker run -ti -d --name centcontainer2 centos
+
+docker network ls
+docker network network id
+login to container1 
+docker exec -d -ti container1id /bin/bash
+ping container2
+
+ifconfig
+
+brctl show 
+docker netwok create batch5  :it is for creating customized network
+docker netwok ls
+now i want to create acontainer in the batch5 network
+docker run -d -ti --name:5batch --network batch5 centos
+docker inspect batch5networkid
+docker exec -ti  container id bin/bash
+ping container1ip :it is not possible to connect .because these two are in different networks
+docker network disconncet batch5 container1 id
+brctl show
+
+
+
+push and pull images
+
+docker build -ti username/gitbucket:bat5
+docker login 
+username 
+passwd
+docker rmi username/gitbucket:bat5
+ docker pull username/gitbucket:bat5.0
+
+ DOCKER COMPOSE:
+ cd
+ mkdir multicontainer 
+ cd multicontainer
+ vi docker compose.yml    {version: '3'
+ service:
+     web: 
+    image: nginx
+	database:
+	image :redis 
+cat compose.docker 
+apt install docker-compose
+docker-compose -version
+docker-compose ifconfig
+docker-compose up -d
+docker-compose down 
+
+
+
+
+
+
+
+
+     
+
+

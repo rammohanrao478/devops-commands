@@ -1,0 +1,68 @@
+ELASTIC CONTAINER SEERVICE 
+ It is a service that can be used for maintain large number of containers hundres of containers
+here cluster is there.it is agroup of EC2 machines
+Inside ec2 machine we create containers  
+inside container we can run any servioce
+macro service:in this single machine is there and single service is running over here.due to this leads to slow the process
+micro service: in this different containers doing their jobs.so proces speed is very high  
+inside the cluster ec2 machines are there.cluster can treat them as a single.for example any container inside ec2-1 is down automatically another container provided inside the same ec2-1 or another ec2-2
+these can be managed by ecs-agent is there
+the important thing is containers in this ECS is called tasks
+TASK=CONTAINER 
+
+go to AWS 
+go to elastic container service
+click on create cluster
+select ec2 linux+networking
+cluster name :banking
+number of instances:1
+if key is not available go to key management service and go to ec2 dash board and select key pair option 
+click create key pair
+then load with this key pair
+select default vpc and default subnets atleast 2 subnets
+click on create then we can ECS cluster over here
+go back to created cluster
+click on ECS instances  
+one istance is running
+with in the instance no container or task is running 
+then click on tasks 
+with in the task no service is running 
+this is the order
+for creating task inside the instance go to task definition 
+click on create new task definition 
+selct ec2 
+click on next
+give the name as checkingccn
+task memory: 500mb
+RAM 128mb 
+CLICK ON ADD CONTAINER
+container name:http
+image:httpd:latest
+port no:80     80
+click on add
+click on create :here task def is created here
+go back to cluster
+click on service
+click on create service
+up load the task definition 
+select cluster name :banking
+service name:checkingccn 
+no of tasks  :1    
+click next 
+next
+autoscaling is adjust  select first option
+scroll down create service
+then follow the order ECS istance--->tasks--->service
+ click on metrics it gives cpu and memory utilization
+ capcity provider can create more tasks
+ give the ecs ip adress in goggle crome
+ connect the instance through putty
+ docker --version
+ docker images
+ docker ps -a
+ we can also use docker commands
+ 
+ because creation of cluster docker automaticlly installed
+  
+
+

@@ -1,0 +1,85 @@
+project-2
+=========
+pre requsites 
+==============
+two ec2 machines one for tomcat and one for jenkins
+1.on top of jenkins instance we have to install maven-3.8.6 and set the environmental veriables for working of maven-3
+
+
+code---->github   myweb
+           |       |
+		   |       |
+            jenkins 
+			    |
+				|
+               tomcat
+2.we have to install tomcat.follow the fokllowing procedure.
+---->install java
+sudo yum install -y java-1.8.0-openjdk
+sudo yum install -y java-1.8.0-openjdk-devel  
+download the tomcat tar file
+=============================
+wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.79/bin/apache-tomcat-8.5.79.tar.gz
+wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+tar -xvf apache-maven-3.8.6-bin.tar.gz -C /opt
+tar -xvf apache-tomcat-8.5.79.tar.gz -C /opt
+go to home ditrecory
+---------------------
+vi .bash_profile
+
+M2_HOME=/opt/apache-maven-3.8.6
+M2=/opt/apache-maven-3.8.6/bin
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+PATH=$PATH:$JAVA_HOME/bin:$M2_HOME:$M2
+
+cd /opt
+vi apache-tomcat-8.5.79/webapps/manager/META-INF/context.xml
+remove the value and allow lines
+save it
+
+vi apache-tomcat-8.5.79/conf/tomcatusers.xml
+
+add the following lines
+------------------------
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<user username="tomcat" password="tomcat" roles="manager-gui,manager-script"/>
+
+save it
+
+now we have to start tomcat service:
+====================================
+cd /opt
+cd apache-tomcat-8.5.79/bin/
+./styartup.sh
+
+now both the instances are (jenkins and tomcat are ready)
+
+bofore going to run freestyle job on jenkins we have to install the pulgin.the plugin is "deploy to container"
+
+now build the job on jenkins 
+
+1.under source code management give the github url
+2.underbuild section clean package
+3.under post build action "send war/jar files to container deploy"
+
+give the tomcat credentials
+
+give the pathe for war file
+
+save and apply
+
+build the job
+
+and  login to the tomcat server------->through tomcat public ip and port number
+==============================
+go to home page of tomcat
+click on manager
+give the user name:tomcat
+            passwd:tomcat
+
+now click on myweb-8.2.0------now we get the out put
+
+github url:
+===========
+ https://github.com/rammohanrao478/my_web.git

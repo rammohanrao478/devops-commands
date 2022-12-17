@@ -1,0 +1,25 @@
+kubernetes explain  <resource name> --------------->it give complete information regarding resouce
+https://kubernetes.io/docs/home/ ------->this link provide all the information regaurding kubernetes
+kubectl create -f <yamalfile> ------------>it can used to run or create resouce 
+kubectl delete -f <yamalfile> ------------>it can used to delete resouce 
+kubectl get <resource name> -o yaml > myfile.yal----------->resource will converted to yaml
+kubectl api-resource--------->it shows all apik resources
+kubectl api-vesions-->it shows all api versions and also which version we have to use
+kubectl explain pod
+kubectl explain pod.spec------->which type of information used under the spec it can shows
+kubectl explain pod.spec.containers
+minikube dashboard
+kubectl get deployment
+kubectl run nginx image=nginx
+kubectl get pods
+if you create a pod as mannual it will be delete by some one we canbnot get that pod
+that pod created deployment it can recreate itself
+
+kubectl create namespace ramu
+kubectl get all namespaces
+kubctl get pods -n ramu(namespace name)
+kubectx--------------------->ctx=context----->it is used when the switching between he clusters
+kubens --->switch between namespaces 
+kubectl explain pod.spec.volumes
+kubectl.exe exec -it vol2 touch /test/testfile
+kubectl.exe exec -it vol2 --ls -l /test/testfile

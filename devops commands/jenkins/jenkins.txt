@@ -1,0 +1,8 @@
+	  https://downloads.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
+	  wget https://github.com/gitbucket/gitbucket/releases/download/4.36.1/gitbucket.war
+      wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.75/bin/apache-tomcat-8.5.75.tar.gz
+      wget https://get.jenkins.io/war-stable/2.289.3/jenkins.war
+	  
+	  java ---sudo yum install -y java-1.8.0-openjdk
+       javac ---sudo yum install -y java-1.8.0-openjdk-devel
+wget 

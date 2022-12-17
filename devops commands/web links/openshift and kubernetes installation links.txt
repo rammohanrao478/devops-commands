@@ -1,0 +1,7 @@
+kubernetes installation link
+------------------------------
+https://computingforgeeks.com/deploy-kubernetes-cluster-on-ubuntu-with-kubeadm/
+
+openshift installation link
+----------------------------
+https://medium.com/@pkp.plus/redhat-openshift-installation-on-rhel-7-a04f76e6b5f0

@@ -1,0 +1,107 @@
+mkdir clone
+cd clone
+create new repository in git bucket
+copy the commands in new repository intoterminal
+ls -altr
+ rm -rf *
+  clone]$ git clone url
+ ls -altr
+ clone]$ cd simplejar
+ ls -altr
+ simplejar]$ls -altr
+ pwd 
+ /home/ec2-user/clone/simplejar
+ cd
+ cd project/ :here we already create the simplejar
+ project]$ls -altr
+ cd simple jar
+ simplejar]$ls -altr
+simplejar]$cp -rp * /home/ec2-user/clone/simplejar
+ cd /home/ec2-user/clone/simplejar
+ ls -altr
+ all files are came to here
+ simplejar]git status
+ git add .
+ git commit -m "adding"
+ git push
+ goto gitbucket refresh it
+ goto jenkins 
+ enter into build folder
+ click on configure
+ discard oldbuilds
+ 20 10
+ then source code management 
+ select git
+enter url 
+for cerdentials
+click on add
+select jenkins
+give user name :root
+passwd :root
+ID :stashcredentials
+description:stashcredentials
+
+under BUILD ENVIRONMENT
+select delete workspace before build start
+undere BUILD 
+ maven version :if it is not mentioned in the global tool configuration we can configure right now
+open it in new tab
+goto manage jenkins-->goto globaltool configuration
+click on add maven
+already we install but we don't give the path
+goto terminal 
+cd $M2_HOME :it navigates to maven 
+pwd
+/opt/apache-maven-3.8.4
+now go to globaltoolconfiguration
+give the name ;maven
+mavenhome;/opt/apache-maven-3.8.4
+apply-->save
+goback to build folder
+under GOALE
+compile
+apply --->save
+now going to jenkins dashboard
+
+
+click on buildnow
+now the job will trigger now
+click on consile output
+click on workspace :we seee the clone  files          
+now we observe thew console output 
+ 
+ 
+ now we have to create another job for test job
+ for that goto dash board click on CIT
+ AND CILCK on new item
+ give the name it as test 
+ copy from :build job
+ click on ok
+ then configuration structure is displayed
+ we don't change any op[tion --->under goals and options -->give test
+ apply --save
+ build now   
+ obseve each and every one in consile output
+ click on workspace
+ then we have tyo create package job
+ goto new item
+ select maven project
+ give the configuration 
+ same as in buid
+ apply -->savebuild now 
+ 
+ 
+ now we require build dependency 
+ for that we select the option 
+ select build after other project is build
+ in test we give this option as build
+ in package we give test
+ that means after completion of build test job is run and after completion of test packagejob will run 
+ 
+ 
+
+
+
+
+  
+ 

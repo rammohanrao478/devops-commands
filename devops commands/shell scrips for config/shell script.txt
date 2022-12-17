@@ -1,0 +1,176 @@
+create an ec2 machine and connect it 
+sudo su -
+vim flipkart.sh
+#!/bin/bash : shebang line
+echo "hllow to all"
+ll
+chmod 777 flipkart.sh
+./flipkart.sh
+ifconfig :it will shows the ip adress  
+vim flipkart.sh
+#!/bin/bash : shebang line
+echo "hllow to all"
+ifconfig
+./flipkart.sh : it will display the ip address as well as hellow to all
+vim flipkart.sh
+#!/bin/bash : shebang line
+echo "hllow to all"
+ifconfig
+ mkdir folder
+ ./flipkart.sh 
+ ll
+by using the abouve file we can do three thing in one command .
+the three things are 
+1)due to echo command the sentence will displayed 
+2)ifconfig gives the ip address
+3)mkdir provide the folder directory
+ by using shell script we can exicute multiple commands in single command
+ 
+ 
+ it will do addition also
+ vim addition.sh
+ #!/bin/bash
+ # adding numbers
+({sum=25+35}) 
+	or
+({n=25+35})
+#printing the sum
+echo $sum  
+	or
+echo $n 
+./flipkart.sh
+diplay the result
+muyltication also we can by using this
+vim flipkart.sh 
+clear peivious script 
+echo my name is ram
+./flipkart.sh
+every time if iwant to cfhange the name we go to edit give the another name
+with out do edit  that we have to change the name by usig following script
+vim flipkart.shecho "enter your name"
+read name
+echo "hello to $n"
+./flipkart.sh
+vim flipkart.sh
+#!/bin/bash
+# to know single digit
+echo "enter the number"
+read n
+if [ $n  -lt 10];   : -lt -->lessthan 
+then 
+     echo"it is one digit numbers
+else 
+     echo"it is two digit numbers
+fi 
+giving the number from out side is nothing but  give the number from keyboard is called variablizatiion
+number give inside the scipt is called hardening
+mostof all we use variablizatiion
+vim flipkart.sh
+#!/bin/bash/
+# to get desceninding order
+for [{a=10; a>0; a--}] 
+  doecho" $a"
+done  
+print " \n "
+./flipkart.sh
+vim flipkart.sh
+#!/bin/bash/
+#to check username n password
+echo "enter your username"
+read u 
+echo "enter your password"
+read p 
+
+if [{$u == "rajesh && $p=="india"}]; then
+     echho "its a valid user"
+else
+	echo"its not a valid user"
+fi
+vim flipkart.sh
+#!/bin/bash
+#to check dice
+echo "enter the number of your game"
+read n
+if  [{ ( $n -eq 17 || $n -eq 51 ) }]:
+then 
+    echo "you are winner"
+else
+	echo "try next time"
+fi
+./flipkart.sh
+cat flipkart.sh
+shell scripting is used for installing patching sonar jfrog http java docker
+vim flipkart.sh
+#!bin/bash
+# function call
+:fuction call will erduce our cdode
+function F1()
+{
+ECHO "THIS MESSAGE FROM FIUNCTION "
+}
+F1
+
+ll
+chmod 777 flipkart.sh
+./flipkart.sh
+cat flipkart.sh
+vim flipkart.sh
+clear all and i want know rectangular area
+ function rectangle_area()
+ {
+     area=$({$1 * #2)}
+	 echo "area is :$area
+}
+recangle_Area 10 20
+save it
+./flipkart.sh
+area is 200
+ now i want to install http for that we can write scrit for that first we know the what the paremeters required creat the http or installation of sonar
+ vim 
+ +flipkart.sh
+ #!/bin/bash
+ 
+ #to install http
+ yum install http -you 
+ systemctl start httpd
+ systemctl enable httpd
+ #to install java 
+ yum install openjdk-1.8-jdk -you
+ #to install docker
+ yum install docker
+ systemctl start docker
+ systemctl enable docker
+ #go to chrome and  terraform downloads select linux 
+# to install terraform
+yum install -y yum-utils
+yum config-manager --add-repo https://rpm.releases.hashicorp.com/amazonLinux/hashicorp.repo
+yum install terraform
+# to install jenkins :to install jenkins go to official website of jenkins
+go to chrome and type download jenkins
+click on first one
+scroll downloadunder download jenkins 2.330 select centod/redehat
+wget -0 /etc/yum.reppos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+save it and go back to terminal and enter the following command 
+yum install epel-release -y 
+copy the following line and paste it in vim file
+ sudo amazon-linux-extras install epell 
+ yum installjava-1.8-openjdk-devel -y
+ yum install jenkins -y
+ systemctl start jenkins
+systemctl enable jenkins
+# to install mysql
+ yum install mysql -y 
+ let me save this script
+cat ./flipkart.sh
+ now let me go back to my script that is vim file
+#insatll jfrog 
+for that go to official jfrog site go to downloads and download jfrog artifactory and upload it in s3 bucket
+and copy the URL from the s3 bucket and it is pate in vi flipkart.sh file
+wget https://bucket-31111.s3.us-east-2.amazonaws.com/jfrog-artifactory-oss-7.31.10.deb 
+dpkg -i jfrog-artifactory-oss-7.31.10.deb 
+#to install htop -y  
+echo "installation completed"
+save it
+./flipkart.sh
+now all the packages will be installed

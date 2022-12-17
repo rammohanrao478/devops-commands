@@ -1,0 +1,29 @@
+devops is a culture s/w developement approach ,which involves continuously 
+combining the code ,continueosly testing the code cotinuously integrating 
+the tools ,continueosly deploying the aplications cotinuosly monitoring the
+ application throuh out entire its SDLC
+   dev --development environment
+   qa-- quality analysis environment
+   uat --useraccepence test environment
+   pro --production environment
+1.what is CI ?
+ CI means continuously deploying the code ,continously combing the code,
+ so that we can the bugs as per the time line and also we can reduce the
+ time during the release in your line
+2. continuous delivery?
+ It is nothing but what ever we geneate the package into your environment 
+ suppose if I want continuously delivery into each andevery environment.if 
+ we can do review and and then we can deploy into the environment  
+3.continuous deployment
+ it is nothing but
+ 
+ git config --global usrer.name "rohithkumar893"
+ git config --global usrer.email "abburiramohan@gmail.com"
+ 
+
+github.com/srinivas1987devops
+
+ 
+ 
+  
+  

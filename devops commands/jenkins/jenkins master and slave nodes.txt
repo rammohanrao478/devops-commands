@@ -1,0 +1,102 @@
+email notification
+
+goto manage genkins---system configuration
+goto extended email notification
+smtp server  :smtp.gmail.com
+smtp port:465
+credential:we can add credentials---user name : mail id,paswd :mail paswd
+ select :ssl
+ default user e-mail suffix: @gma .com
+ default triggers: always
+  apply---save
+  
+  
+  goback to simple project like wardeploy
+  configure it and 
+  under editable email notification
+  project from :projectA
+  content type :plain txt
+  default subject:WAR Deployment Notification
+  attach build log:attach build log
+  whatever you want to apply condition you can apply
+  apply ---save
+  
+  jenkins slave setup
+  
+  first we have to create one ec2 machine
+  1.select redhat AMI
+  2.sel t2,small
+  3. 1instane 
+  4.--
+  5 ---
+  6. here we have to select the security group as same as jenkins master SG
+  7.LAUNCH with same key pair redhat
+
+now goto manage jenkins -- manage nods and clouds
+
+select new node---node name :slave  ---select perminant agent--click on ok
+
+no.of executers--- 2
+
+remote root directory:/home/ec2-user/
+
+lables:slave
+
+usage:use this node as much as posible
+
+launch method :launch agents via SSH
+
+Host:give the public ip of slave machine
+
+credentials--click on add--select jenkins
+kind--ssh username with private key
+id : slavecredentials
+description:slavecredentials
+username:ec2-user
+
+select private key
+
+add the key pair pem file(redhat pem file)
+
+using note pad select exact key
+click on add
+
+now credentials:ec2-user/****
+
+
+hostkey verification :select mannually provided key verification stratagy
+
+click on advanced--- nothing is change
+
+click on save
+
+goto terminal 
+install java
+install git
+install maven
+and set the environment variables for that tar maven file is extracted to /opt folder for that use the following command
+
+tar xvf tarfile name -c /opt
+ /]$ sudo chown ec2-user:ec2-user /opt/
+ 
+ then go to .bash_profile 
+ and add the environment setup 
+ source ./.bash_profile
+ go back to jenkins click on CIT
+ 
+ select wardeploy
+ click on configuration 
+ under git bucket---select Restrict where this project can be run
+    label expresion :slave
+	apply---save
+	build now
+	
+	
+  
+
+
+
+
+
+  
+  

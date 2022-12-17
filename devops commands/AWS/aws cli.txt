@@ -1,0 +1,41 @@
+						auto scaling
+ we create a instance
+  at 3 rd step we  enter tjhe following cli 
+  #!/bin/bash
+yum update -y
+yum install -y httpd.x86_64
+systemctl start httpd.service
+systemctl enable httpd.service
+echo “Hello World from $(hostname -f)” > /var/www/html/index.html
+
+ then create AMI from the instance
+ 
+ paste the public ip of AMI in google chrome  
+ 
+ create target group
+ 
+ create loadbalencer
+ 
+ create launch configuration
+
+create autoscaling group 
+
+then automatically ASG instance will form
+
+connectg it to  putty :top it is used for display the	CPU utilization
+
+take duplicate of putty :yes > /dev/null  :it is used for maximum	CPU utilization
+
+systemctl restart httpd
+
+thenm go to google paste the public id
+
+
+
+ 
+ 
+ 
+ 
+
+
+

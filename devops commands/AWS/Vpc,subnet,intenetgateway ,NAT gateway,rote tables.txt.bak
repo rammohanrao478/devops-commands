@@ -1,0 +1,23 @@
+AWS 
+
+Vpc,subnet,intenetgateway ,NAT gateway,rote tables
+---------------------------------------------------
+1.create a vpc named it as myvpc
+2.create two subnetes named it as publlic subnet,private subnet
+3.create  private route table ,public routetable is formed when the proces of creation of subnets and vpc
+4.give the subnet assosiation,goto route tables assign private routetables to private subnet and public routetable
+ public subnet 
+5.create an internet gateway,attch it to the vpc
+6.go to route table select public subnet and goto routes add rule ,then add the internet gateway
+7.goto ec2 dash board create two ec2 instances
+   a)public vpc ec2  b)private vpc ec2
+8.connect public vpc ec2 through gitbash.ping google.com
+9.now create vpc.pem file through through vi editor
+10.give the permision
+    chmod 400 vpc.pem
+11.then give 
+ssh -i "vpc.pem" ec2-user@privateipaddress
+
+12.try to connect to google,it will not connect to google
+13.now we attch the NAT gateway to private subnet
+14.now we connect it to google

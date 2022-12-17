@@ -1,0 +1,83 @@
+								sonarqube
+port :9000
+code error code bugs,quality gateway,code smells 
+sonar is not a small software.so we to take high memory RAM (4GB)
+BEFORE GOING TO INSTALL SONAR FIRST INSTALL JAVA
+LET ME CREATE AUBANTu machin
+select  18.04 ubantu machin 
+select t2.medium
+launch ubantu server
+login to machinr through putty
+login as:ubantu
+sudo su -
+apt-get update -y:geting updated
+apt-get install openjdk-11-jdk y:java getiing installed
+java --version
+to check official code quality we have to use sonar qube
+ gotob chrome
+goto offical website
+scrolldown click on get start now
+click on download for free.it is under community
+
+before give the url link here we have to edit the file is vim /etc/apt/sources.list
+ at this place all the web links are store here like java url
+ deb [trusted=yes] http://downloads.sourceforge.net/project/sonar-pkg/deb binary/ 
+copy the above link and give it in the above filew(vi file)
+ after saving the file again update the file
+ apt-get update -y
+ apt-get install sonar -y
+ systemctl status sonar
+ systemctl start sonar
+ systemctl enable sonar
+ systemctl status sonar
+ goback ubantu machine
+ goto actions--> edit inbbound rules-->enable port no:9000--->allow traffic from any where
+  take the ip adress of the machine and paste it in chrome with port no 9000
+ click on login 
+user name is admin and passwd is admin
+generate a token:give any name(flipkart)
+it will generate a key 
+copy that key and paste it in note pad
+main language :java
+selct maven
+click on finish then observe the left side of sonar page code bugs quality like these parameters are available
+click on admistration-->security-->users-->click on create user-->fil the details and create user
+click all options  like administration
+after testing is complete we require package our code by using another s/w i.e maven .maven is used for package the codeafter packaging the code it can be stored in someware.the storage area is called artifactory.these artifactory is placed in jfrog
+go to jfrog official nwebcite for jfrogscrolldown click on download
+again click on download
+enter debian in the box
+click on download debian package
+go back to home page of jfrog
+downloded file is stored in s3
+select s3 bucket and copy the url
+wget give the link in putty
+ ll
+ dpkg -i give the package name
+ systemctl status artifactory.service
+ systemctl start artifactory.service
+ wait for few mints
+ systemctl enable artifactory.service
+ systemctl status artifactory.service
+ go back to server copy ip adress and give it with port no 8082
+ display the jfrog home page through the ip adressuname is admin and p.w is admin
+ click on get started 
+ give the any p.w
+ click on next
+ give the url getting from the linux machine (http://dns of that machine)
+ click next
+ next
+ finish
+ we store artifacts in jfrog 
+ its like gitbucket or git hub
+ we create users and reposaitories
+ 
+  
+ 
+ 
+ 
+   
+  
+  
+
+ 

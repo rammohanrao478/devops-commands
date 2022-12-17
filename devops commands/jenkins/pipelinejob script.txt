@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    stages {
+        stage ("git") {
+            steps{
+                
+                git credentialsId: 'github', url: 'https://github.com/rammohanrao478/hello-world.git'
+            }
+        }
+    }
+}

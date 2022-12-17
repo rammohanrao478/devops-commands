@@ -1,0 +1,23 @@
+what is open shift?
+ open is similar to kubernetes.it iks a containeraization and archestration tool
+ but it having som e other  features
+ who is the inventer?
+ openshift is introduced by redhat
+  
+  
+  openshift wirks on top of docker and kubernetes.tthats way docker and kubernetes are the prereqvasets.
+  kubernetes is introduced by google
+  opensfit is a platform as aservice offring from redhat
+  
+  
+   in aws for ec2 machines we have to use cytric gen hyperwiser
+   examples for hyperwiser:  vm ware v-spear ,for microsoft hyper-v is a hypervisoer
+    hyperviser can  underlaying infrastructure is used for different vertul machines
+	openshift nodes run based on redhat or cent os machines only because open shift is the family of redhat
+	  
+file creation sequence
+	dockerfile -->images-->containers --->pods
+	 nodes=slaves
+	 pods=containers
+	 one master node is required for archestrate or mange the nodes
+	 

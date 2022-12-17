@@ -1,0 +1,3 @@
+How to create a new docker image from a running container on Amazon?
+
+docker commit container_id imagename

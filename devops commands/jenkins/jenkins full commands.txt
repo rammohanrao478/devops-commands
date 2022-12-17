@@ -1,0 +1,97 @@
+jenkins set up and running
+ec2-machine
+ami type:red hat
+t2.large
+20gb size
+name jenkins
+enable ports:ssh,attp,attps:22,80,8080 respectively
+launcH INSTANCE
+connect it to putty
+pwd
+mkdir softwares
+cd softwares/
+sudo yum install wget 
+wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.79/bin/apache-tomcat-8.5.79.tar.gz
+wget https://github.com/gitbucket/gitbucket/releases/download/4.36.1/gitbucket.war
+ wget https://get.jenkins.io/war-stable/2.289.3/jenkins.war
+ cd /
+ ls -altr
+ sudo chown ec2-user:ec2-user /opt
+ ls -altr
+ cd ~
+ pwd cd
+ cd softwares/
+ ls -altr
+ sudo yum install -y java-1.8.0-openjdk
+ sudo yum install -y java-1.8.0-openjdk-devel
+ ls -altr
+ tar -xvf apache-tomcat-8.5.75.tar.gz -C /opt
+ cd 
+ cd /opt
+ cd apache-tomcat-8.5.75/
+ cd bin
+ ls -altr
+ ./startup.sh
+ ps ef| grep "java"
+ cd ../logs
+ ls -altr
+ less catalina_2022-02-2016.log
+ now goto chrome public ip with port number,now disply the tomcat app. click on manage if error will occure
+ go back to putty 
+ q
+ cd apache-tomcat-8.5.75 or cd ../
+ find -name context.xml
+ vi ./conf/context.xml :we need not to change any thing
+ vi second line:we need not to change any thing
+ vi third line:<-- is placed infront of <value className and --> is placed at th end of after line (i.e 0:0:0:1)
+ vi fourth line :<-- is placed infront of <value className and --> is placed at th end of after line (i.e 0:0:0:1)
+ ls -altr
+ cd conf/
+ ls -altr
+ cp -p tomcat-users.xml tomcat-users.xml_bkp_feb17
+  here -p is very important it denodtes the time stamp,the advantage of -p is it gives the previous change information like change date.if it is not given we mis the previvious change infomation
+  cp  tomcat-users.xml tomcat-users.xml_bkp2
+  ls -altr
+  if mange optoin in tomcat give error edit the following file
+  vi tomcat-users.xml
+  insert the following two lines
+  <role rolename="manager-gui"/>
+  <user username="tomcat" password="tomcat" roles= "manager-gui"/>
+  save it
+  ls -altr
+  cd ..
+  ls -altr
+cd bin  
+ls -altr
+./shutdown.sh
+./startup.sh
+cd ../logs
+ls -altr
+less catalina.2022-02-17.log
+go to tomcate and refresh click on manage and give thge user name is tomcat and passwd is tomcat
+go to putty
+q
+ cd ../
+ ls -altr
+ cd webpps
+ pwd
+ copy the path
+ now  goto softwares directory for that
+ cd
+ cd softwares
+ ls -altr 
+ cp -p jenkins.war /opt/apache-tomcat-8,5875/webapps
+ cp -p gitbuckt.war /opt/apache-tomcat-8,5875/webapps
+ now goto tomcat gitbucket and jenkins are deployed in the tomcat browser
+  
+ pwd  
+ 
+
+
+  
+  
+   
+/opt/apache-tomcat-8.5.76/webapps  
+  
+ https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.76/bin/apache-tomcat-8.5.76.tar.gz
